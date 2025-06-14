@@ -1,0 +1,29 @@
+package betinha_casino;
+import java.util.Random;
+import java.util.Scanner;
+public class betting {
+public static void main(String[] args) {
+	//presets
+	Random random = new Random();
+	Scanner i = new Scanner (System.in);
+	int numeroDigitado;
+	int numeroSorteado = random.nextInt(100) + 1;
+	final int MAX_TENTATIVAS = 0;
+	int tentativas = 3;
+	
+	
+	//console
+	do {
+	System.out.println("Pense em um numero de 1 a 100 e digite-o a seguir:");
+	numeroDigitado = i.nextInt();
+	if (numeroDigitado == numeroSorteado && tentativas > MAX_TENTATIVAS) {
+		System.out.println("Voce acertou!");
+	} else {
+		tentativas--;
+		System.out.println("Voce errou. Tentativas restantes: " +tentativas);
+	}
+	} while(numeroDigitado != numeroSorteado && tentativas > MAX_TENTATIVAS);
+	System.out.println("Numero maximo de tentativas excedido. Numero sorteado: " +numeroSorteado);
+} 
+
+}
