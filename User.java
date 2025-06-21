@@ -13,7 +13,7 @@ public class User {
 	boolean verificacao = false;
 	final int MAX_TENTATIVAS = 3;
 	int tentativas = 0;
-	int tentativasLogin = 0;
+	int tentativasLogin = 1;
 	int tentativasRestantes = MAX_TENTATIVAS - tentativas;
 	boolean cartaoBloqueado = false;
 	int valorDeposito = 0;
@@ -55,13 +55,13 @@ public class User {
 			senhaDigitada = in.nextLine();
 			System.out.println("======================================");
 			
-			if (!senhaConta.equals(senhaDigitada) || !nome.equals(nomeDigitado) && tentativasRestantesLogin > 0) {
+			if ((!senhaConta.equals(senhaDigitada) || !nome.equals(nomeDigitado)) && tentativasRestantesLogin > 0) {
 				tentativasLogin = tentativasLogin + 1;
-				tentativasRestantesLogin = MAX_TENTATIVAS - tentativasLogin;
+				tentativasRestantesLogin = (MAX_TENTATIVAS - tentativasLogin) + 1;
 				System.out.println("===========================================");
 				System.out.println("Usuario e/ou senha incorretos. Tentativas restantes: " + tentativasRestantesLogin);
 				System.out.println("===========================================");
-				tentativasRestantesLogin = MAX_TENTATIVAS - tentativasLogin;
+				tentativasRestantesLogin = (MAX_TENTATIVAS - tentativasLogin) + 1;
 			} else if (senhaConta.equals(senhaDigitada) && nome.equals(nomeDigitado) && tentativasRestantesLogin > 0)  {
 				login = true;
 				System.out.println("Log-in bem sucedido!");
@@ -226,3 +226,4 @@ public class User {
 	
 
 }
+
