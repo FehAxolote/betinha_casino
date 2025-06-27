@@ -7,7 +7,7 @@ public class GeneralMenu {
 		User user = new User();
 		BettingGame bg = new BettingGame();
 		Bet beta = new Bet();
-		LojinhaBetinha lj = new LojinhaBetinha();
+		BetinhaStore lj = new BetinhaStore();
 		Scanner in = new Scanner(System.in);
 		
 	//var
