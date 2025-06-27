@@ -3,8 +3,16 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class BettingGame {
-	public
-	void game(User user) {
+	public static final String RESET = "\u001B[0m";
+    public static final String RED = "\u001B[31m";
+    public static final String GREEN = "\u001B[32m";
+    public static final String YELLOW = "\u001B[33m";
+    public static final String BLUE = "\u001B[34m";
+    public static final String PURPLE = "\u001B[35m";
+    public static final String CYAN = "\u001B[36m";
+    public static final String BOLD = "\u001B[1m";
+	public void game(User user) {
+	    
     //codes in portuguese
 		//presets
 		Random random = new Random();
@@ -39,7 +47,7 @@ public class BettingGame {
 			System.out.println("5 - Adivinhação impossível -> de 1 a 500 (máximo de tentativas = 12,  multiplicador máximo: 40.0x);");
 			System.out.println("Digite qualquer outro número para sair.");
 			System.out.println("=========================================");
-			System.out.printf("Saldo de apostas atual: R$%.2f\n", user.getSaldoAposta());
+			System.out.printf(YELLOW + BOLD + "Saldo de apostas atual: R$%.2f\n"  + RESET, user.getSaldoAposta());
 			System.out.println("=========================================");
 			String entrada = i.nextLine(); 
 			opcao = Integer.parseInt(entrada);
@@ -54,12 +62,17 @@ public class BettingGame {
 			do {
 				System.out.println("==================================================");
 				System.out.println("Pense em um numero de 1 a 12 e digite-o a seguir:");
-				numeroDigitado = i.nextInt();
+				String palpiteStr1 = i.nextLine();
+				numeroDigitado = Integer.parseInt(palpiteStr1);
 				int distancia1 = Math.abs(numeroDigitado - numeroSorteado_drop1);
 					if (numeroDigitado == numeroSorteado_drop1 && tentativas_drop1 > MAX_TENTATIVAS) {
 						confirmacao1 = false;
+						if (distancia1 < melhorDistancia1) {
+						    melhorPalpite1 = numeroDigitado;
+						    melhorDistancia1 = distancia1;
+						}
 						System.out.println("==================================================");
-						System.out.println("Você acertou! Sua aposta foi multiplicada em 2.5x");
+						System.out.println(GREEN + "Você acertou! Sua aposta foi multiplicada em 2.5x" + RESET);
 						System.out.println("==================================================");
 						user.multiplicador(2.5);
 					} else {
@@ -72,22 +85,24 @@ public class BettingGame {
 					System.out.println("Você errou. Tentativas restantes: " +tentativas_drop1);
 					}
 			} while(numeroDigitado != numeroSorteado_drop1 && tentativas_drop1 > MAX_TENTATIVAS);
-			if (melhorPalpite1 != numeroSorteado_drop1) {
-				System.out.println("==================================================");
-				System.out.println("Seu melhor palpite: " + melhorPalpite1 + ".");
-				System.out.println("Número máximo de tentativas excedido. Numero sorteado: " +numeroSorteado_drop1);
-				System.out.println("Saldo apostado, infelizmente, perdido. :(");
-				System.out.println("==================================================");
-				user.multiplicador(0);
-			} else {
-			System.out.println("==================================================");
-			System.out.println("Seu melhor palpite: " + melhorPalpite1 + ".");
-			System.out.println("Número máximo de tentativas excedido. Numero sorteado: " +numeroSorteado_drop1);
-			System.out.println("==================================================");
+			if (confirmacao1) {
+				if (melhorPalpite1 != numeroSorteado_drop1) {
+					System.out.println("==================================================");
+					System.out.println(CYAN + "Seu melhor palpite: " + melhorPalpite1 + ".");
+					System.out.println("Número máximo de tentativas excedido. Número sorteado: " +numeroSorteado_drop1 + RESET);
+					System.out.println(RED + "Saldo apostado, infelizmente, perdido. :(" + RESET);
+					System.out.println("==================================================");
+					user.multiplicador(0);
+				} else {
+					System.out.println("==================================================");
+					System.out.println(CYAN + "Seu melhor palpite: " + melhorPalpite1 + ".");
+					System.out.println("Número máximo de tentativas excedido. Numero sorteado: " +numeroSorteado_drop1 + RESET);
+					System.out.println("==================================================");
+				}
 			}
 			} else {
 				System.out.println("==================================================");
-				System.out.println("Você já jogou este jogo. Volte mais tarde ou reinicie o sistema.");
+				System.out.println(RED + "Você já jogou este jogo. Volte mais tarde ou reinicie o sistema." + RESET);
 				System.out.println("==================================================");
 			}
 			break;
@@ -100,12 +115,17 @@ public class BettingGame {
 				do {
 					System.out.println("==================================================");
 					System.out.println("Pense em um numero de 1 a 50 e digite-o a seguir:");
-					numeroDigitado = i.nextInt();
+					String palpiteStr2 = i.nextLine();
+					numeroDigitado = Integer.parseInt(palpiteStr2);
 					int distancia2 = Math.abs(numeroDigitado - numeroSorteado_drop2);
 						if (numeroDigitado == numeroSorteado_drop2 && tentativas_drop2 > MAX_TENTATIVAS) {
 							confirmacao2 = false;
+							if (distancia2 < melhorDistancia2) {
+							    melhorPalpite2 = numeroDigitado;
+							    melhorDistancia2 = distancia2;
+							}
 							System.out.println("==================================================");
-							System.out.println("Você acertou! Sua aposta foi multiplicada em 5.0x");
+							System.out.println(GREEN + "Você acertou! Sua aposta foi multiplicada em 5.0x" + RESET);
 							System.out.println("==================================================");
 							user.multiplicador(5);
 						} else {
@@ -115,29 +135,29 @@ public class BettingGame {
 							}
 						tentativas_drop2--;
 						System.out.println("==================================================");
-						System.out.println("Você errou. Tentativas restantes: " +tentativas_drop2);
+						System.out.println(RED + "Você errou. Tentativas restantes: " + tentativas_drop2 + RESET);
 						}
 				} while(numeroDigitado != numeroSorteado_drop2 && tentativas_drop2 > MAX_TENTATIVAS);
-				if (melhorDistancia2 <= 3) {
+				if (melhorDistancia2 <= 3 && melhorDistancia2 != 0) {
 					System.out.println("==================================================");
-					double multiplicador1 = (4/melhorDistancia2);
-					System.out.println("Você se aproximou suficientemente do número para ganhar um multiplicador! Multiplicador = " + multiplicador1 + "x.");
+					double multiplicador1 = (double) 4/melhorDistancia2;
+					System.out.println(GREEN + "Você se aproximou suficientemente do número para ganhar um multiplicador! Multiplicador = " + multiplicador1 + "x." + RESET);
 					System.out.println("==================================================");
 					user.multiplicador(multiplicador1);
 				} else {
 					System.out.println("==================================================");
-					System.out.println("Infelizmente, não foi possível obter nenhum bônus, e o dinheiro foi perdido. :( Tente novamente mais tarde.");
+					System.out.println(RED + "Infelizmente, não foi possível obter nenhum bônus, e o dinheiro foi perdido. :( Tente novamente mais tarde." + RESET);
 					System.out.println("==================================================");
 					user.multiplicador(0);
 				}
 			System.out.println("==================================================");
-			System.out.println("Seu melhor palpite: " + melhorPalpite2 + ".");
-			System.out.println("Numero máximo de tentativas excedido. Numero sorteado: " +numeroSorteado_drop2 + ".");
+			System.out.println(CYAN + "Seu melhor palpite: " + melhorPalpite2 + ".");
+			System.out.println("Numero máximo de tentativas excedido. Numero sorteado: " +numeroSorteado_drop2 + "." + RESET);
 			System.out.println("==================================================");
 			
 				} else {
 					System.out.println("==================================================");
-					System.out.println("Você já jogou este jogo. Volte mais tarde ou reinicie o sistema.");
+					System.out.println(RED + "Você já jogou este jogo. Volte mais tarde ou reinicie o sistema." + RESET);
 					System.out.println("==================================================");
 				}
 			break;
@@ -150,12 +170,17 @@ public class BettingGame {
 				do {
 					System.out.println("==================================================");
 					System.out.println("Pense em um numero de 1 a 100 e digite-o a seguir:");
-					numeroDigitado = i.nextInt();
+					String palpiteStr3 = i.nextLine();
+					numeroDigitado = Integer.parseInt(palpiteStr3);
 					int distancia3 = Math.abs(numeroDigitado - numeroSorteado_drop3);
 						if (numeroDigitado == numeroSorteado_drop3 && tentativas_drop3 > MAX_TENTATIVAS) {
 							confirmacao3 = false;
+							if (distancia3 < melhorDistancia3) {
+							    melhorPalpite3 = numeroDigitado;
+							    melhorDistancia3 = distancia3;
+							}
 							System.out.println("==================================================");
-							System.out.println("Você acertou! Sua aposta foi multiplicada em 10.0x");
+							System.out.println(GREEN + "Você acertou! Sua aposta foi multiplicada em 10.0x" + RESET);
 							System.out.println("==================================================");
 							user.multiplicador(10);
 						} else {
@@ -165,29 +190,29 @@ public class BettingGame {
 							}
 						tentativas_drop3--;
 						System.out.println("==================================================");
-						System.out.println("Voce errou. Tentativas restantes: " +tentativas_drop3);
+						System.out.println(RED + "Você errou. Tentativas restantes: " +tentativas_drop3 + RESET);
 						}
 				} while(numeroDigitado != numeroSorteado_drop3 && tentativas_drop3 > MAX_TENTATIVAS);
-				if (melhorDistancia3 <= 5) {
+				if (melhorDistancia3 <= 5 && melhorDistancia3 != 0) {
 					System.out.println("==================================================");
-					double multiplicador2 = (6/melhorDistancia3);
-					System.out.println("Você se aproximou suficientemente do número para ganhar um multiplicador! Multiplicador = " + multiplicador2 + "x.");
+					double multiplicador2 = (double) 6/melhorDistancia3;
+					System.out.println(GREEN + "Você se aproximou suficientemente do número para ganhar um multiplicador! Multiplicador = " + multiplicador2 + "x." + RESET);
 					System.out.println("==================================================");
 					user.multiplicador(multiplicador2);
 				} else {
 					System.out.println("==================================================");
-					System.out.println("Infelizmente, não foi possível obter nenhum bônus, e o dinheiro foi perdido. :( Tente novamente mais tarde.");
+					System.out.println(RED + "Infelizmente, não foi possível obter nenhum bônus, e o dinheiro foi perdido. :( Tente novamente mais tarde." + RESET);
 					System.out.println("==================================================");
 					user.multiplicador(0);
 				}
 			System.out.println("==================================================");
-			System.out.println("Seu melhor palpite: " + melhorPalpite3 + ".");
-			System.out.println("Numero máximo de tentativas excedido. Numero sorteado: " +numeroSorteado_drop3 + ".");
+			System.out.println(CYAN + "Seu melhor palpite: " + melhorPalpite3 + ".");
+			System.out.println("Numero máximo de tentativas excedido. Numero sorteado: " +numeroSorteado_drop3 + "." + RESET);
 			System.out.println("==================================================");
 			
 				} else {
 					System.out.println("==================================================");
-					System.out.println("Você já jogou este jogo. Volte mais tarde ou reinicie o sistema.");
+					System.out.println(RED + "Você já jogou este jogo. Volte mais tarde ou reinicie o sistema." + RESET);
 					System.out.println("==================================================");
 				}
 				break;
@@ -200,12 +225,17 @@ public class BettingGame {
 				do {
 					System.out.println("==================================================");
 					System.out.println("Pense em um numero de 1 a 250 e digite-o a seguir:");
-					numeroDigitado = i.nextInt();
+					String palpiteStr4 = i.nextLine();
+					numeroDigitado = Integer.parseInt(palpiteStr4);
 					int distancia4 = Math.abs(numeroDigitado - numeroSorteado_drop4);
 						if (numeroDigitado == numeroSorteado_drop4 && tentativas_drop4 > MAX_TENTATIVAS) {
 							confirmacao4 = false;
+							if (distancia4 < melhorDistancia4) {
+							    melhorPalpite4 = numeroDigitado;
+							    melhorDistancia4 = distancia4;
+							}
 							System.out.println("==================================================");
-							System.out.println("Voce acertou! Sua aposta foi multiplicada em 20.0x");
+							System.out.println(GREEN + "Você acertou! Sua aposta foi multiplicada em 20.0x" + RESET);
 							System.out.println("==================================================");
 							user.multiplicador(20);
 						} else {
@@ -215,29 +245,29 @@ public class BettingGame {
 							}
 						tentativas_drop4--;
 						System.out.println("==================================================");
-						System.out.println("Voce errou. Tentativas restantes: " +tentativas_drop4);
+						System.out.println(RED + "Você errou. Tentativas restantes: " + tentativas_drop4 + RESET);
 						}
 				} while(numeroDigitado != numeroSorteado_drop4 && tentativas_drop4 > MAX_TENTATIVAS);
-				if (melhorDistancia4 <= 7) {
+				if (melhorDistancia4 <= 7 && melhorDistancia4 != 0) {
 					System.out.println("==================================================");
-					double multiplicador3 = (8/melhorDistancia4);
-					System.out.println("Você se aproximou suficientemente do número para ganhar um multiplicador! Multiplicador = " + multiplicador3 + "x.");
+					double multiplicador3 = (double) 8/melhorDistancia4;
+					System.out.println(GREEN + "Você se aproximou suficientemente do número para ganhar um multiplicador! Multiplicador = " + multiplicador3 + "x." + RESET);
 					System.out.println("==================================================");
 					user.multiplicador(multiplicador3);
 				} else {
 					System.out.println("==================================================");
-					System.out.println("Infelizmente, não foi possível obter nenhum bônus, e o dinheiro foi perdido. :( Tente novamente mais tarde.");
+					System.out.println(RED + "Infelizmente, não foi possível obter nenhum bônus, e o dinheiro foi perdido. :( Tente novamente mais tarde." + RESET);
 					System.out.println("==================================================");
 					user.multiplicador(0);
 				}
 			System.out.println("==================================================");
-			System.out.println("Seu melhor palpite: " + melhorPalpite4 + ".");
-			System.out.println("Numero máximo de tentativas excedido. Numero sorteado: " +numeroSorteado_drop4 + ".");
+			System.out.println(CYAN + "Seu melhor palpite: " + melhorPalpite4 + ".");
+			System.out.println("Numero máximo de tentativas excedido. Numero sorteado: " +numeroSorteado_drop4 + "." + RESET);
 			System.out.println("==================================================");
 			
 				} else {
 					System.out.println("==================================================");
-					System.out.println("Você já jogou este jogo. Volte mais tarde ou reinicie o sistema.");
+					System.out.println(RED + "Você já jogou este jogo. Volte mais tarde ou reinicie o sistema." + RESET);
 					System.out.println("==================================================");
 				}
 				break;
@@ -250,12 +280,17 @@ public class BettingGame {
 				do {
 					System.out.println("==================================================");
 					System.out.println("Pense em um numero de 1 a 500 e digite-o a seguir:");
-					numeroDigitado = i.nextInt();
-					int distancia5 = Math.abs(numeroDigitado - numeroSorteado_drop4);
+					String palpiteStr5 = i.nextLine();
+					numeroDigitado = Integer.parseInt(palpiteStr5);
+					int distancia5 = Math.abs(numeroDigitado - numeroSorteado_drop5);
 						if (numeroDigitado == numeroSorteado_drop5 && tentativas_drop5 > MAX_TENTATIVAS) {
 							confirmacao5 = false;
+							if (distancia5 < melhorDistancia5) {
+							    melhorPalpite5 = numeroDigitado;
+							    melhorDistancia5 = distancia5;
+							}
 							System.out.println("==================================================");
-							System.out.println("Você acertou! Sua aposta foi multiplicada em 40.0x.");
+							System.out.println(GREEN + "Você acertou! Sua aposta foi multiplicada em 40.0x." + RESET);
 							System.out.println("==================================================");
 							user.multiplicador(40);
 						} else {
@@ -265,28 +300,28 @@ public class BettingGame {
 							}
 						tentativas_drop5--;
 						System.out.println("==================================================");
-						System.out.println("Você errou. Tentativas restantes: " +tentativas_drop5);
+						System.out.println(RED + "Você errou. Tentativas restantes: " +tentativas_drop5 + RESET);
 						}
 				} while(numeroDigitado != numeroSorteado_drop5 && tentativas_drop5 > MAX_TENTATIVAS);
-				if (melhorDistancia5 <= 10) {
+				if (melhorDistancia5 <= 10 && melhorDistancia5 != 0) {
 					System.out.println("==================================================");
-					double multiplicador4 = (11/melhorDistancia5);
-					System.out.println("Você se aproximou suficientemente do número para ganhar um multiplicador! Multiplicador = " + multiplicador4 + "x.");
+					double multiplicador4 = (double) 11/melhorDistancia5;
+					System.out.println(GREEN + "Você se aproximou suficientemente do número para ganhar um multiplicador! Multiplicador = " + multiplicador4 + "x." + RESET);
 					System.out.println("==================================================");
 					user.multiplicador(multiplicador4);
 				} else {
 					System.out.println("==================================================");
-					System.out.println("Infelizmente, não foi possível obter nenhum bônus, e o dinheiro foi perdido. :( Tente novamente mais tarde.");
+					System.out.println(RED + "Infelizmente, não foi possível obter nenhum bônus, e o dinheiro foi perdido. :( Tente novamente mais tarde." + RESET);
 					System.out.println("==================================================");
 					user.multiplicador(0);
 				}
 			System.out.println("==================================================");
-			System.out.println("Seu melhor palpite: " + melhorPalpite5 + ".");
-			System.out.println("Numero máximo de tentativas excedido. Numero sorteado: " +numeroSorteado_drop5 + ".");
+			System.out.println(CYAN + "Seu melhor palpite: " + melhorPalpite5 + ".");
+			System.out.println("Numero máximo de tentativas excedido. Numero sorteado: " +numeroSorteado_drop5 + "." + RESET);
 			System.out.println("==================================================");
 				} else {
 					System.out.println("==================================================");
-					System.out.println("Voce já jogou este jogo. Volte mais tarde ou reinicie o sistema.");
+					System.out.println(RED + "Você já jogou este jogo. Volte mais tarde ou reinicie o sistema." + RESET);
 					System.out.println("==================================================");
 				}
 				break;
