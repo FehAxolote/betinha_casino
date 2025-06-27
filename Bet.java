@@ -3,6 +3,14 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Bet {
+	public static final String RESET = "\u001B[0m";
+    public static final String RED = "\u001B[31m";
+    public static final String GREEN = "\u001B[32m";
+    public static final String YELLOW = "\u001B[33m";
+    public static final String BLUE = "\u001B[34m";
+    public static final String PURPLE = "\u001B[35m";
+    public static final String CYAN = "\u001B[36m";
+    public static final String BOLD = "\u001B[1m";
 	public void bet(User user) {
 		//validação de jogos
 		boolean validacaoTM = true;
@@ -52,7 +60,7 @@ public class Bet {
 		System.out.println("4 - Final da Copa do Mundo de Pega-Pega 2025 - Anta Gorda (RS);");
 		System.out.println("5 - Sair.");
 		System.out.println("=========================================");
-		System.out.printf("Saldo de apostas atual: R$%.2f\n", user.getSaldoAposta());
+		System.out.printf(YELLOW + BOLD + "Saldo de apostas atual: R$%.2f\n" + RESET, user.getSaldoAposta());
 		System.out.println("=========================================");
 		selecao = in.nextInt();
 		in.nextLine();
@@ -71,8 +79,8 @@ public class Bet {
 				System.out.println("=========================================");
 				System.out.println("Em quem você aposta? (Porcentagens de vitória entre parênteses.)");
 				System.out.println("===========================================");
-			    System.out.printf("A - 🇧🇷Pedro Álvares Cabral (%.1f%%) -> ODD = %.3fx\n", porcentagemTMA, oddATM);
-			    System.out.printf("B - 🇨🇳Mao Tsé-Tung (%.1f%%) -> ODD = %.3fx\n", (100 - porcentagemTMA), oddBTM);
+			    System.out.printf(GREEN + "A - 🇧🇷Pedro Álvares Cabral (%.1f%%) -> ODD = %.3fx\n" + RESET, porcentagemTMA, oddATM);
+			    System.out.printf(RED + "B - 🇨🇳Mao Tsé-Tung (%.1f%%) -> ODD = %.3fx\n" + RESET, (100 - porcentagemTMA), oddBTM);
 				System.out.println("===========================================");
 				escolha = in.nextLine().trim().toUpperCase();
 				user.aposta();
@@ -80,12 +88,12 @@ public class Bet {
 				if (porcentagemTM >=0 && porcentagemTM <= porcentagemTMA) {
 					resultado = "A";
 				     System.out.println("===========================================");
-				        System.out.println("Pedro Álvares Cabral utilizou uma raquete de pau-brasil e venceu.");
+				        System.out.println(GREEN + "Pedro Álvares Cabral utilizou uma raquete de pau-brasil e venceu. 🥇" + RESET);
 				        System.out.println("===========================================");
 				} else {
 					resultado = "B";
 				     System.out.println("===========================================");
-				        System.out.println("Mao Tsé-Tung iniciou uma revolução socialista no meio da partida e venceu.");
+				        System.out.println(RED + "Mao Tsé-Tung iniciou uma revolução socialista no meio da partida e venceu. ☭" + RESET);
 				        System.out.println("===========================================");
 				}
 				
@@ -105,7 +113,7 @@ public class Bet {
 				}
 				} else {
 					System.out.println("===========================================");
-					System.out.println("Você já jogou este jogo hoje. Tente novamente mais tarde! ;)");
+					System.out.println(RED + "Você já jogou este jogo hoje. Tente novamente mais tarde! ;)" + RESET);
 					System.out.println("===========================================");
 				}
 				break;
@@ -118,8 +126,8 @@ public class Bet {
 				System.out.println("=========================================");
 				System.out.println("Em quem você aposta? (Porcentagens de vitória entre parênteses.)");
 				System.out.println("===========================================");
-			    System.out.printf("A - 🇿🇦Nelson Mandela (%.1f%%) -> ODD = %.3fx\n", porcentagemCFA, oddACF);
-			    System.out.printf("B - 🇵🇱Marie Curie (%.1f%%) -> ODD = %.3fx\n", (100 - porcentagemCFA), oddBCF);
+			    System.out.printf(PURPLE + "A - 🇿🇦Nelson Mandela (%.1f%%) -> ODD = %.3fx\n" + RESET, porcentagemCFA, oddACF);
+			    System.out.printf(YELLOW + "B - 🇵🇱Marie Curie (%.1f%%) -> ODD = %.3fx\n" + RESET, (100 - porcentagemCFA), oddBCF);
 				System.out.println("===========================================");
 				escolha = in.nextLine().trim().toUpperCase();
 				user.aposta();
@@ -134,12 +142,12 @@ public class Bet {
 			    if (resultado.equals("A")) {
 			        multiplicadorCF = oddACF;
 			        System.out.println("===========================================");
-			        System.out.println("Nelson Mandela deu capa em metade do server e venceu!");
+			        System.out.println(PURPLE + "Nelson Mandela deu capa em metade do server e venceu! 🥇" + RESET);
 			        System.out.println("===========================================");
 			    } else {
 			        multiplicadorCF = oddBCF;
 			        System.out.println("===========================================");
-			        System.out.println("Marie Curie utilizou o poder da radiação e ganhou!");
+			        System.out.println(YELLOW + "Marie Curie utilizou o poder da radiação e ganhou! ☢️" + RESET);
 			        System.out.println("===========================================");
 			    }
 
@@ -152,7 +160,7 @@ public class Bet {
 				}
 				} else {
 					System.out.println("===========================================");
-					System.out.println("Você já jogou este jogo hoje. Tente novamente mais tarde! ;)");
+					System.out.println(RED + "Você já jogou este jogo hoje. Tente novamente mais tarde! ;)" + RESET);
 					System.out.println("===========================================");
 				}
 				break;
@@ -166,8 +174,8 @@ public class Bet {
 				System.out.println("=========================================");
 				System.out.println("Em quem você aposta? (Porcentagens de vitória entre parênteses.)");
 				System.out.println("===========================================");
-			    System.out.printf("A - Bar Sem Lona (PA) (%.1f%%) -> ODD = %.3fx\n", porcentagemBRA, oddABR);
-			    System.out.printf("B - Liver Pão de Queijo (MG) (%.1f%%) -> ODD = %.3fx\n", (100 - porcentagemBRA), oddBBR);
+			    System.out.printf(RED + "A - Bar Sem Lona (PA) (%.1f%%) -> ODD = %.3fx\n" + RESET, porcentagemBRA, oddABR);
+			    System.out.printf(YELLOW + "B - Liver Pão de Queijo (MG) (%.1f%%) -> ODD = %.3fx\n" + RESET, (100 - porcentagemBRA), oddBBR);
 				System.out.println("===========================================");
 				escolha = in.nextLine().trim().toUpperCase();
 				user.aposta();
@@ -175,12 +183,12 @@ public class Bet {
 				if (porcentagemBRA >=0 && porcentagemBR <= porcentagemBRA) {
 					resultado = "A";
 				     System.out.println("===========================================");
-				        System.out.println("Bar Sem Lona venceu, e eles finalmente puderam comprar lona!)");
+				        System.out.println(RED + "Bar Sem Lona venceu, e eles finalmente puderam comprar lona!)" + RESET);
 				        System.out.println("===========================================");
 				} else {
 					resultado = "B";
 				     System.out.println("===========================================");
-				        System.out.println("Liver Pão de Queijo ganhou, e... Me dá um pouco de pão de queijo aí, na moral...");
+				        System.out.println(YELLOW + "Liver Pão de Queijo ganhou, e... Me dá um pouco de pão de queijo aí, na moral..." + RESET);
 				        System.out.println("===========================================");
 				}
 				
@@ -200,7 +208,7 @@ public class Bet {
 				}
 				} else {
 					System.out.println("===========================================");
-					System.out.println("Você já jogou este jogo hoje. Tente novamente mais tarde! ;)");
+					System.out.println(RED + "Você já jogou este jogo hoje. Tente novamente mais tarde! ;)" + RESET);
 					System.out.println("===========================================");
 				}
 				break;
@@ -213,8 +221,8 @@ public class Bet {
 				System.out.println("=========================================");
 				System.out.println("Em quem você aposta? (Porcentagens de vitória entre parênteses.)");
 				System.out.println("===========================================");
-			    System.out.printf("A - 🧣Ralsei ???? (%.1f%%) -> ODD = %.3fx\n", porcentagemPPA, oddAPP);
-			    System.out.printf("B - ❤️Kris Dreemurr (%.1f%%) -> ODD = %.3fx\n", (100 - porcentagemPPA), oddBPP);
+			    System.out.printf(GREEN + "A - 🧣Ralsei ???? (%.1f%%) -> ODD = %.3fx\n" + RESET, porcentagemPPA, oddAPP);
+			    System.out.printf(BLUE + "B - ❤️Kris Dreemurr (%.1f%%) -> ODD = %.3fx\n" + RESET, (100 - porcentagemPPA), oddBPP);
 				System.out.println("===========================================");
 				escolha = in.nextLine().trim().toUpperCase();
 				user.aposta();
@@ -229,12 +237,12 @@ public class Bet {
 			    if (resultado.equals("A")) {
 			        multiplicadorPP = oddAPP;
 			        System.out.println("===========================================");
-			        System.out.println("Ralsei ???? ganhou! (Contra a vontade dele.)");
+			        System.out.println(GREEN + "Ralsei ???? ganhou! (Contra a vontade dele.)" + RESET);
 			        System.out.println("===========================================");
 			    } else {
 			        multiplicadorPP = oddBPP;
 			        System.out.println("===========================================");
-			        System.out.println("Kris Dreemurr ganhou! (Ralsei ficou feliz com o resultado.)");
+			        System.out.println(BLUE + "Kris Dreemurr ganhou! (Ralsei ficou feliz com o resultado.)" + RESET);
 			        System.out.println("===========================================");
 			    }
 
@@ -247,7 +255,7 @@ public class Bet {
 				}
 				} else { 
 					System.out.println("===========================================");
-					System.out.println("Você já jogou este jogo hoje. Tente novamente mais tarde! ;)");
+					System.out.println(RED + "Você já jogou este jogo hoje. Tente novamente mais tarde! ;)" + RESET);
 					System.out.println("===========================================");
 				}
 				break;
