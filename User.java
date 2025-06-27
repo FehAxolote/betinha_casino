@@ -3,6 +3,16 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class User {
+	//ansi codes 
+	public static final String RESET = "\u001B[0m";
+    public static final String RED = "\u001B[31m";
+    public static final String GREEN = "\u001B[32m";
+    public static final String YELLOW = "\u001B[33m";
+    public static final String BLUE = "\u001B[34m";
+    public static final String PURPLE = "\u001B[35m";
+    public static final String CYAN = "\u001B[36m";
+    public static final String BOLD = "\u001B[1m";
+    
 	//scanner
 	Scanner in = new Scanner(System.in);
 	//random
@@ -13,7 +23,7 @@ public class User {
 	//numero aleatorio
 	int aleatorioMenorIdade = random.nextInt(10) + 1;
 	int aleatorioViagemTemporal = random.nextInt(3) + 1;
-	int aleatorioMensagem = random.nextInt(3) + 1;
+	int aleatorioMensagem = random.nextInt(4) + 1;
 	//
 	//viagem temporal
 	boolean viagemTemporal = false;
@@ -26,6 +36,13 @@ public class User {
 	//aposta 
 	private double valorAposta;
 	
+	//senha secreta
+	private boolean senhaSecretaUsada = false;
+	boolean ralsei = false;
+	boolean felipe = false;
+	boolean eduardo = false;
+	boolean isaias = false;
+	
 	//dados user
 	private String nome;
 	private String senhaConta;
@@ -35,15 +52,17 @@ public class User {
 	private String logradouro;
 	private String cep;
 	private String telefone;
+	private String apelido;
 	private String senhaCartaoDigitada;
 	private boolean a = true;
+	private boolean b = true;
 	
 	//*operacionais
 	//
 	//**saque e depósito
 	boolean verificacao = false;
 	final int MAX_TENTATIVAS = 3;
-	int tentativas = 0;
+	int tentativas = 1;
 	boolean cartaoBloqueado = false;
 	double valorDeposito = 0;
 	boolean login = false;
@@ -59,53 +78,59 @@ public class User {
 	//identidade
 	public void identidade() {
 		System.out.println("======================================");
-		System.out.println("Bem-vindo ao sistema vital da Betinha, um rogue-like (não sei o que significa, mas usei essa palavra porque a achei sensasional) INSANO sobre um cassino-bet caótico!");
+		System.out.println(YELLOW + BOLD + "Bem-vindo ao sistema vital da Betinha, um roguelike \n(não sei o que significa, mas usei essa palavra porque a achei sensasional) \nINSANO sobre um cassino-bet caótico!");
 		System.out.println("Além do nosso cassino e bet, você encontrara um sistema bancário, um cartão e uma loja na qual você poderá gastar seu dinheiro!!!");
-		System.out.println("======================================");
+		System.out.println(RESET + "======================================");
 		System.out.println("Para usufruir desse sistema genial, insira seus dados nos campos a seguir.");
 		System.out.println("======================================");
-		System.out.print("Nome do usuário: ");
+		System.out.print(CYAN + "Nome do usuário: " + RESET);
 		this.nome = in.nextLine();
-		System.out.print("CPF: ");
+		System.out.print(CYAN + "Apelido: " + RESET);
+		this.setApelido(in.nextLine());
+		System.out.print(CYAN + "CPF: " + RESET);
 		int menoridade = random.nextInt(10) + 1;
 		this.cpf = in.nextLine();
-		System.out.print("E-mail: ");
+		System.out.print(CYAN + "E-mail: " + RESET);
 		this.email = in.nextLine();
-		System.out.print("Telefone: ");
+		System.out.print(CYAN + "Telefone: " + RESET);
 		this.telefone = in.nextLine();
-		System.out.print("CEP: ");
+		System.out.print(CYAN + "CEP: " + RESET);
 		this.cep = in.nextLine();
-		System.out.print("Logradouro: ");
+		System.out.print(CYAN + "Logradouro: " + RESET);
 		this.logradouro = in.nextLine();
-		System.out.print("Senha da conta: ");
+		System.out.print(CYAN + "Senha da conta: " + RESET);
 		this.senhaConta = in.nextLine();
-		System.out.print("Senha do cartão (Obs.: esta senha não poderá ser redefinida): ");
+		System.out.print(CYAN + "Senha do cartão (obs.: esta senha não poderá ser redefinida): " + RESET);
 		this.senhaCartao = in.nextLine();
 		if (menoridade == 1) {
-			System.out.println("Na consulta à Receita Federal, você é menor de 18 anos. Não será possível utilizar a Betinha no prazo de " + aleatorioMenorIdade + " anos");
-			System.out.println("Viajar no tempo? (True para sim, false para não.)");
+			System.out.println(RED + "===========================================");
+			System.out.println("Na consulta à Receita Federal, você é menor de 18 anos. Não será possível utilizar a Betinha no prazo de " + aleatorioMenorIdade + " anos.");
+			System.out.println("===========================================");
+			System.out.println(RESET + "Viajar no tempo? (True para sim, false para não.)");
 			viagemTemporal = in.nextBoolean();
-			
+			in.nextLine();
 			if (viagemTemporal == true) {
-				System.out.println("Você decide, imprudentemente, entrar num buraco de minhoca para jogar num cassino... Vamos ver na onde isso dá.");
+				System.out.println(BLUE + "Você decide, imprudentemente, entrar num buraco de minhoca para jogar num cassino... Vamos ver na onde isso dá." + RESET);
 				System.out.println("======================================");
 				if (aleatorioViagemTemporal == 3) {
 					if (aleatorioMensagem == 1) {
-						System.out.print("Uma borboleta, que pensava que ia encontrar uma refeição, acabou entrando junto com você! \nVocê meio que destruiu o universo. \nParabéns. \n");
+						System.out.print(RED + "Uma borboleta, que pensava que ia encontrar uma refeição, acabou entrando junto com você! \nVocê meio que destruiu o universo. \nParabéns. \n" + RESET);
 						logindefinitivo = false;
 					} else if (aleatorioMensagem == 2) {
-						System.out.println("Você conseguiu! \nMentira, na verdade, quando saiu do buraco de minhoca, você acabou tropeçando numa banana e isso ruiu o Mark Zuckerberg, que ficou maluco e destruiu o planeta Terra. \nIt's over para o beta. \n");
+						System.out.println(RED + "Você conseguiu! \nMentira, na verdade, quando saiu do buraco de minhoca, você acabou tropeçando numa banana e isso ruiu o Mark Zuckerberg, que ficou maluco e destruiu o planeta Terra. \nIt's over para o beta. \n" + RESET);
+						logindefinitivo = false;
+					} else if (aleatorioMensagem == 3 ){
+						System.out.print(RED + "Você conseguiu! \nVoltar 4,56 bilhões de anos. \nAcho que você errou as configurações do buraco de minhoca, e a falta de cianobactérias te deixou sem oxigênio. \n(In)felizmente, nessa época não existia  Betinha. \n" + RESET);
 						logindefinitivo = false;
 					} else {
-						System.out.print("Você conseguiu! \nVoltar 4,56 bilhões de anos. \nAcho que você errou as configurações do buraco de minhoca, e a falta de cianobactérias te deixou sem oxigênio. \n(In)felizmente, nessa época não existia  Betinha. \n");
-						logindefinitivo = false;
+						System.out.print(RED + "Uhm... Acho que você entrou no buraco de minhoca errado. \nEsse é muito pequeno, só cabe uma minhoca. \nPrecisa de ajuda? \n" + RESET);
 					}
 				} else {
-					System.out.print("Você distorceu o tecido do espaço-tempo e pode ter bagunçado a vida de inúmeros seres. \nMas, você pode apostar. \nVocê se enche de determinação com o poder da imprudência, \nda pilantragem, \ndo vício em apostas, \ne da infalibilidade da lei de Murphy.\n");
+					System.out.print(GREEN + "Você distorceu o tecido do espaço-tempo e pode ter bagunçado a vida de inúmeros seres. \nMas, você pode apostar. \nVocê se enche de determinação com o poder da imprudência, \nda pilantragem, \ndo vício em apostas, \ne da infalibilidade da lei de Murphy.\n" + RESET);
 					logindefinitivo = true;
 				}
 			} else {
-				System.out.print("Você é ético e não quis definhar o tecido do espaço-tempo (ou criar uma nova linha temporal) \ne, talvez, instaurar o caos universal para jogar num cassino michuruca. \nContinue assim. \n");
+				System.out.print(GREEN + "Você é ético e não quis definhar o tecido do espaço-tempo (ou criar uma nova linha temporal) \ne, talvez, instaurar o caos universal para jogar num cassino michuruca. \nContinue assim. \n" + RESET);
 				logindefinitivo = false;
 			}
 		}
@@ -122,35 +147,37 @@ public class User {
 			int tentativasRestantesLogin = MAX_TENTATIVAS - tentativasLogin;
 			System.out.println("Para o log-in, verifique seus dados a seguir");
 			System.out.println("======================================");
-			System.out.print("Nome do usuario: ");
+			System.out.print(CYAN + "Apelido do usuário: " + RESET);
 			nomeDigitado = in.nextLine();
-			System.out.print("Senha da conta: ");
+			System.out.print(CYAN + "Senha da conta: " + RESET);
 			senhaDigitada = in.nextLine();
 			System.out.println("======================================");
 			
-			if ((!senhaConta.equals(senhaDigitada) || !nome.equals(nomeDigitado)) && tentativasRestantesLogin > 0) {
+			if ((!senhaConta.equals(senhaDigitada) || !apelido.equals(nomeDigitado)) && tentativasRestantesLogin > 0) {
 				tentativasLogin = tentativasLogin + 1;
 				tentativasRestantesLogin = (MAX_TENTATIVAS - tentativasLogin) + 1;
 				System.out.println("===========================================");
-				System.out.println("Usuario e/ou senha incorretos. Tentativas restantes: " + tentativasRestantesLogin);
+				System.out.println(RED + "Usuário e/ou senha incorretos. Tentativas restantes: " + tentativasRestantesLogin + RESET);
 				System.out.println("===========================================");
 				tentativasRestantesLogin = (MAX_TENTATIVAS - tentativasLogin) + 1;
 			} else if (senhaConta.equals(senhaDigitada) && nome.equals(nomeDigitado) && tentativasRestantesLogin > 0)  {
 				login = true;
-				System.out.println("Log-in bem sucedido!");
+				System.out.println(GREEN + "Log-in bem sucedido!" + RESET);
 			} else if (tentativasLogin == MAX_TENTATIVAS) {
-				System.out.println("Numero maximo de tentativas excedido! Reinicie o sistema e tente novamente.");
+				System.out.println(RED + "Número máximo de tentativas excedido! Reinicie o sistema e tente novamente." + RESET);
 				logindefinitivo = false;
 			}
 	} 
 	
 	//opcoes de saque e deposito do banco da bet
 	public void sacarSaldo() {
+		tentativas = 1;
 		a = true;
 		verificacao = false;
 		while (cartaoBloqueado == false && a == true) {
 		int tentativasRestantes = MAX_TENTATIVAS - tentativas;
-		System.out.println("Insira a quantidade que você deseja sacar do seu saldo de apostas:");
+		System.out.println("======================================");
+		System.out.print ("Insira a quantidade que você deseja sacar do seu saldo de apostas: ");
 		double s = in.nextDouble();
 		in.nextLine();
 		System.out.println("===========================================");
@@ -166,49 +193,54 @@ public class User {
 		}	
 		
 		if(s > this.valorDeposito && verificacao == true) {
-			System.out.println("Não é possiível sacar uma quantia maior daquela possuída em conta.");
+			System.out.println(RED + "Não é possiível sacar uma quantia maior daquela possuída em conta." + RESET);
 			a = false;
 			System.out.println("===========================================");
 		} else if (s <= this.valorDeposito && verificacao == true){
 			this.saldo += s;
 			this.valorDeposito -= s;
-			System.out.println("Saque realizado com sucesso!");
+			System.out.println(GREEN + "Saque realizado com sucesso!" + RESET);
 			a = false;
 			System.out.println("===========================================");
 		} else if (s <= this.valorDeposito && verificacao == false) {
-			System.out.println("Senha do cartão incorreta. Tentativas restantes até o bloqueio do cartão: " + tentativasRestantes);
+			System.out.println(RED + "Senha do cartão incorreta. Tentativas restantes até o bloqueio do cartão: " + tentativasRestantes + RESET);
 			System.out.println("===========================================");
 			if (tentativasRestantes <= 0) {
 				this.cartaoBloqueado = true;
-				System.out.println("Cartão bloqueado. Desbloqueie e tente novamente mais tarde.");
+				System.out.println(RED + "Cartão bloqueado. Desbloqueie e tente novamente mais tarde." + RESET);
 				a = false;
 				System.out.println("===========================================");
 			}
 		} else if (s > this.valorDeposito && verificacao == false) {
-			System.out.println("Senha incorreta e quantidade inválida. Tentativas restantes: " + tentativasRestantes);
+			System.out.println(RED + "Senha incorreta e quantidade inválida. Tentativas restantes: " + tentativasRestantes + RESET);
 			System.out.println("===========================================");
 		} else if(s <= 0 && verificacao == true) {
-			System.out.println("Não e possivel sacar essa quantia.");
+			System.out.println(RED + "Não é possível sacar essa quantia." + RESET);
 			System.out.println("===========================================");
 		} else if (s <= 0 && verificacao == false) {
-			System.out.println("Quantidade inválida e senha do cartão incorreta.");
+			System.out.println(RED + "Quantidade inválida e senha do cartão incorreta." + RESET);
 			System.out.println("===========================================");
 		} else if (cartaoBloqueado == true) {
-			System.out.println("Cartão bloqueado. Tente novamente mais tarde.");
+			System.out.println(RESET + "Cartão bloqueado. Tente novamente mais tarde." + RESET);
 			System.out.println("===========================================");
 		}
-	} 
+	} 	if (bloqueioDefinitivo == true || cartaoBloqueado == true) { 
+		System.out.println("===========================================");
+		System.out.println(RED + "Sistema indisponível." + RESET);
+		System.out.println("==========================================="); }
 		
 }
 	
  
 	
 	public void depositarSaldo() {
+		tentativas = 1;
 		a = true;
 		verificacao = false;
 		while (cartaoBloqueado == false && a == true) {
 		int tentativasRestantes = MAX_TENTATIVAS - tentativas;
-		System.out.println("Insira a quantidade que você deseja depositar para apostar:");
+		System.out.println("======================================");
+		System.out.print("Insira a quantidade que você deseja depositar para apostar: ");
 		double s = in.nextDouble();
 		in.nextLine();
 		System.out.println("===========================================");
@@ -224,39 +256,42 @@ public class User {
 		}	
 		
 		if(s > this.saldo && verificacao == true) {
-			System.out.println("Não é possivel depositar uma quantia maior daquela possuida em conta.");
+			System.out.println(RED + "Não é possivel depositar uma quantia maior daquela possuida em conta." + RESET);
 			a = false;
 			System.out.println("===========================================");
 		} else if (s <= this.saldo && verificacao == true){
 			this.saldo -= s;
 			this.valorDeposito += s;
-			System.out.println("Depósito realizado com sucesso!");
+			System.out.println(GREEN + "Depósito realizado com sucesso!" + RESET);
 			a = false;
 			System.out.println("===========================================");
 		} else if (s <= this.saldo && verificacao == false) {
-			System.out.println("Senha do cartão incorreta. Tentativas restantes até o bloqueio do cartão: " + tentativasRestantes);
+			System.out.println(RED + "Senha do cartão incorreta. Tentativas restantes até o bloqueio do cartão: " + tentativasRestantes + RESET);
 			System.out.println("===========================================");
 			if (tentativasRestantes <= 0) {
 				this.cartaoBloqueado = true;
-				System.out.println("Cartão bloqueado. Desbloqueie e tente novamente mais tarde.");
+				System.out.println(RED + "Cartão bloqueado. Desbloqueie e tente novamente mais tarde." + RESET);
 				a = false;
 				
 				System.out.println("===========================================");
 			}
 		} else if (s > this.saldo && verificacao == false) {
-			System.out.println("Senha incorreta e quantidade inválida. Tentativas restantes: " +tentativasRestantes);
+			System.out.println(RED + "Senha incorreta e quantidade inválida. Tentativas restantes: " + tentativasRestantes + RESET);
 			System.out.println("===========================================");
 		} else if(s <= 0 && verificacao == true) {
-			System.out.println("Não é possivel depositar essa quantia.");
+			System.out.println(RED + "Não é possivel depositar essa quantia." + RESET);
 			System.out.println("===========================================");
 		} else if (s <= 0 && verificacao == false) {
-			System.out.println("Quantidade inválida e senha do cartão incorreta.");
+			System.out.println(RED + "Quantidade inválida e senha do cartão incorreta." + RESET);
 			System.out.println("===========================================");
 		}  else if (cartaoBloqueado == true) {
-			System.out.println("Cartão bloqueado. Tente novamente mais tarde.");
+			System.out.println(RED + "Cartão bloqueado. Tente novamente mais tarde." + RESET);
 			System.out.println("===========================================");
 		}
-	}	
+	}	if (bloqueioDefinitivo == true || cartaoBloqueado == true) { 
+		System.out.println("===========================================");
+		System.out.println(RED + "Sistema indisponível." + RESET);
+		System.out.println("==========================================="); }
 }
 	
 	
@@ -270,31 +305,47 @@ public class User {
 		}
 	
 	public void setNome(String n) {
-		n = this.nome;
+		this.nome = n;
 		}
 	
 	public void setCEP(String c) {
-		c = this.cep;
+		this.cep = c;
 		}
 	
 	public void setLogradouro(String l) {
-		l = this.logradouro;
+		this.logradouro = l;
 		}
 	
 	public void setSenhaConta(String s) {
-		s = this.senhaConta;
+		this.senhaConta = s;
 		}
 	
 	public void setCPF(String c) {
-		c = this.cpf;
+		this.cpf = c;
 		}
 	
+	public String getApelido() {
+		return apelido;
+		}
+	
+	public void setApelido(String apelido) {
+		this.apelido = apelido;
+		}
+
+	public boolean getSenhaSecretaUsada() {
+	    return senhaSecretaUsada;
+		}
+	
+	public void setSenhaSecretaUsada(boolean usada) {
+	    this.senhaSecretaUsada = usada;
+		}
+
 	public void setEMAIL(String e) {
-		e = this.email;
+		this.email = e;
 		}
 	
 	public void setTelefone(String t) {
-		t = this.telefone;
+		this.telefone = t;
 		}
 	
 	public String getNome() {
@@ -328,24 +379,30 @@ public class User {
 	
 	//desbloquear cartao
 	public void desbloquearCartao() {
-		while (bloqueioDefinitivo == false && a == true) {
+		b = true;
+		while ((bloqueioDefinitivo == false && b == true) && cartaoBloqueado == true) {
 		System.out.println("======================================");
-		System.out.print("Para desbloquear seu cartao, insira a senha da sua conta a seguir:");
+		System.out.print("Para desbloquear seu cartao, insira a senha da sua conta a seguir: ");
 		String senhaContaDigitada = in.nextLine();
 		System.out.println("======================================");
 			if (senhaContaDigitada.equals(senhaConta)) {
 				System.out.println("======================================");
-				System.out.println("Cartao desbloqueado com sucesso!");
+				System.out.println(GREEN + "Cartão desbloqueado com sucesso!" + RESET);
 				System.out.println("======================================");
-				a = false;
+				b = false;
+				cartaoBloqueado = false;
 			} else {
 				System.out.println("======================================");
-				System.out.println("Cartao bloqueado definitivamente. Reinicie o sistema.");
+				System.out.println(RED + "Cartão bloqueado definitivamente. Reinicie o sistema." + RESET);
 				System.out.println("======================================");
 				bloqueioDefinitivo = true;
+				cartaoBloqueado = true;
 			} 
-		} System.out.println("Cartão bloqueado definitivamente. Reinicie o sistema.");
+		} 
+		if (cartaoBloqueado == false) { System.out.println("======================================");
+		System.out.println(GREEN + "Cartão já desbloqueado." + RESET);
 		System.out.println("======================================");
+		}
 	}
 	
 	//hora da aposta
@@ -355,13 +412,13 @@ public class User {
 		if (valorAposta <= this.valorDeposito) {
 			valorDeposito -= valorAposta;
 			System.out.println("======================================");
-			System.out.println("Você apostou " + valorAposta + " reais.");
+			System.out.println(YELLOW + BOLD + "Você apostou " + valorAposta + " reais." + RESET);
 			System.out.println("======================================");
-			System.out.printf("Saldo de apostas atual: R$%.2f\n", valorDeposito);
+			System.out.printf(YELLOW + BOLD + "Saldo de apostas atual: R$%.2f\n"  + RESET, valorDeposito);
 			System.out.println("======================================");
 		} else if (valorAposta <= 0) {
 			System.out.println("======================================");
-			System.out.println("Aposta inválida.");
+			System.out.println(RED + "Aposta inválida." + RESET);
 			System.out.println("======================================");
 		}
 	}
@@ -374,18 +431,18 @@ public class User {
 		this.valorDeposito = this.valorDeposito + resultado;
 		if (resultado != 0) {
 			System.out.println("======================================");
-			System.out.printf("Parabéns, você venceu! Saldo de apostas atual: R$%.2f\n", valorDeposito);
+			System.out.printf(GREEN + "Parabéns, você venceu! Saldo de apostas atual: R$%.2f\n" + RESET, valorDeposito);
 			System.out.println("======================================");
 		} else {
 			System.out.println("======================================");
-			System.out.printf("Infelizmente, você perdeu. :c Na próxima você consegue! Saldo de apostas atual: R$%.2f\n", valorDeposito);
+			System.out.printf(RED + "Infelizmente, você perdeu. :c Na próxima você consegue! Saldo de apostas atual: R$%.2f\n"  + RESET, valorDeposito);
 			System.out.println("======================================");
 		}
 	}
 	//gastar na loja 
 		public boolean gastar(double gasto) {
 			if (gasto <= this.valorDeposito) {
-				this.valorDeposito -= this.valorDeposito;
+				this.valorDeposito -= gasto;
 				return true;
 			} else {
 				return false;
@@ -393,29 +450,33 @@ public class User {
 		}
 		
 		public void especiais(String s) {
-			if (s.equals("Ralsei")) {
+			if (s.equals("Ralsei") && ralsei == false) {
 				System.out.println("======================================");
-				System.out.println("Você descobriu um dos códigos secretos! 3000 reais foram adicionados ao seu saldo.");
-				System.out.println("======================================");
-				this.saldo += 5000;
-			} else if (s.equals("Felipe")) {
-				System.out.println("======================================");
-				System.out.println("Você descobriu um dos códigos secretos! 3000 reais foram adicionados ao seu saldo.");
+				System.out.println(GREEN + "Você descobriu um dos códigos secretos! 3000 reais foram adicionados ao seu saldo." + RESET);
+				ralsei = true;
 				System.out.println("======================================");
 				this.saldo += 3000;
-			} else if (s.equals("Isaías")) {
+			} else if (s.equals("Felipe") && felipe == false) {
 				System.out.println("======================================");
-				System.out.println("Você descobriu um dos códigos secretos! 3000 reais foram adicionados ao seu saldo.");
+				System.out.println(GREEN + "Você descobriu um dos códigos secretos! 3000 reais foram adicionados ao seu saldo." + RESET);
+				felipe = true;
 				System.out.println("======================================");
 				this.saldo += 3000;
-			} else if (s.equals("Eduardo")) {
+			} else if (s.equals("Isaías") && isaias == false) {
 				System.out.println("======================================");
-				System.out.println("Você descobriu um dos códigos secretos! 3000 reais foram adicionados ao seu saldo.");
+				System.out.println(GREEN + "Você descobriu um dos códigos secretos! 3000 reais foram adicionados ao seu saldo." + RESET);
+				isaias = true;
+				System.out.println("======================================");
+				this.saldo += 3000;
+			} else if (s.equals("Eduardo") && eduardo == false) {
+				System.out.println("======================================");
+				System.out.println(GREEN + "Você descobriu um dos códigos secretos! 3000 reais foram adicionados ao seu saldo." + RESET);
+				eduardo = true;
 				System.out.println("======================================");
 				this.saldo += 3000;
 			} else {
 				System.out.println("======================================");
-				System.out.println("Código inválido. :(");
+				System.out.println(RED + "Código inválido. :(" + RESET);
 				System.out.println("======================================");
 			}
 		}
@@ -425,8 +486,3 @@ public class User {
 		}
 
 }
-	
-	
-
-}
-
