@@ -169,7 +169,6 @@ public class User {
 		System.out.println("======================================");
 		System.out.print ("Insira a quantidade que você deseja sacar do seu saldo de apostas: ");
 		double s = lerDoubleSM(in);
-		in.nextLine();
 		System.out.println("===========================================");
 		System.out.print("Confirme sua senha (senha do cartão): ");
 		senhaCartaoDigitada = in.nextLine();
