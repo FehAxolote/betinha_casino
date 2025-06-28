@@ -62,8 +62,7 @@ public class Bet {
 		System.out.println("=========================================");
 		System.out.printf(YELLOW + BOLD + "Saldo de apostas atual: R$%.2f\n" + RESET, user.getSaldoAposta());
 		System.out.println("=========================================");
-		selecao = in.nextInt();
-		in.nextLine();
+		selecao = user.lerInteiroSM(in);
 		if (selecao >= 1 && selecao <= 4) {
 			a = true;
 		} else {
@@ -82,7 +81,7 @@ public class Bet {
 			    System.out.printf(GREEN + "A - 🇧🇷Pedro Álvares Cabral (%.1f%%) -> ODD = %.3fx\n" + RESET, porcentagemTMA, oddATM);
 			    System.out.printf(RED + "B - 🇨🇳Mao Tsé-Tung (%.1f%%) -> ODD = %.3fx\n" + RESET, (100 - porcentagemTMA), oddBTM);
 				System.out.println("===========================================");
-				escolha = in.nextLine().trim().toUpperCase();
+				escolha = user.lerTextoSMUpperCase(in);
 				user.aposta();
 				//sistema porcentagem
 				if (porcentagemTM >=0 && porcentagemTM <= porcentagemTMA) {
@@ -129,7 +128,7 @@ public class Bet {
 			    System.out.printf(PURPLE + "A - 🇿🇦Nelson Mandela (%.1f%%) -> ODD = %.3fx\n" + RESET, porcentagemCFA, oddACF);
 			    System.out.printf(YELLOW + "B - 🇵🇱Marie Curie (%.1f%%) -> ODD = %.3fx\n" + RESET, (100 - porcentagemCFA), oddBCF);
 				System.out.println("===========================================");
-				escolha = in.nextLine().trim().toUpperCase();
+				escolha = user.lerTextoSMUpperCase(in);
 				user.aposta();
 				//sistema porcentagem
 				if (porcentagemCFA >=0 && porcentagemCF <= porcentagemCFA) {
@@ -177,7 +176,7 @@ public class Bet {
 			    System.out.printf(RED + "A - Bar Sem Lona (PA) (%.1f%%) -> ODD = %.3fx\n" + RESET, porcentagemBRA, oddABR);
 			    System.out.printf(YELLOW + "B - Liver Pão de Queijo (MG) (%.1f%%) -> ODD = %.3fx\n" + RESET, (100 - porcentagemBRA), oddBBR);
 				System.out.println("===========================================");
-				escolha = in.nextLine().trim().toUpperCase();
+				escolha = user.lerTextoSMUpperCase(in);
 				user.aposta();
 				//sistema porcentagem
 				if (porcentagemBRA >=0 && porcentagemBR <= porcentagemBRA) {
@@ -224,7 +223,7 @@ public class Bet {
 			    System.out.printf(GREEN + "A - 🧣Ralsei ???? (%.1f%%) -> ODD = %.3fx\n" + RESET, porcentagemPPA, oddAPP);
 			    System.out.printf(BLUE + "B - ❤️Kris Dreemurr (%.1f%%) -> ODD = %.3fx\n" + RESET, (100 - porcentagemPPA), oddBPP);
 				System.out.println("===========================================");
-				escolha = in.nextLine().trim().toUpperCase();
+				escolha = user.lerTextoSMUpperCase(in);
 				user.aposta();
 				//sistema porcentagem
 				if (porcentagemPPA >=0 && porcentagemPP <= porcentagemPPA) {
