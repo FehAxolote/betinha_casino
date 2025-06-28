@@ -405,7 +405,7 @@ public class User {
 			System.out.println("======================================");
 			System.out.printf(YELLOW + BOLD + "Saldo de apostas atual: R$%.2f\n"  + RESET, valorDeposito);
 			System.out.println("======================================");
-		} else if (valorAposta <= 0) {
+		} else if (valorAposta <= 0 || valorAposta > this.valorDeposito) {
 			System.out.println("======================================");
 			System.out.println(RED + "Aposta inválida." + RESET);
 			System.out.println("======================================");
