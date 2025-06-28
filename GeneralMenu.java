@@ -58,8 +58,7 @@ public class GeneralMenu {
 			System.out.println(BLUE + BOLD + "=".repeat(43));
 			System.out.println("Usuário: " + user.getApelido());
 			System.out.println("=".repeat(43) + RESET);
-			String entrada1 = in.nextLine(); 
-			selecao1 = Integer.parseInt(entrada1);	
+			selecao1 = user.lerInteiroSM(in);	
 			switch (selecao1) {
 				case 1:
 					while (b) {
@@ -68,15 +67,14 @@ public class GeneralMenu {
 						System.out.println(GREEN + "🏦".repeat(43) + RESET);
 						System.out.println(GREEN + BOLD + "💎 Bem-vindo ao MENU da BankTinha 💎!" + RESET);
 						System.out.println(GREEN + "[1] (🪙)- Sacar do SALDO DE APOSTAS;");
-						System.out.println("[2] (💰)- Depositar no SALDO DE APOSTAS;");
+						System.out.println("[2] (💰) - Depositar no SALDO DE APOSTAS;");
 						System.out.println("[3] (📊) - Verificar saldo;");
 						System.out.println("[4] (🔓) - Desbloquear cartao;");
 						System.out.println("[5] (🔚) - Sair." + RESET);
 						System.out.println(BLUE + BOLD + "===========================================");
 						System.out.println("Usuário: " + user.getApelido());
 						System.out.println("===========================================" + RESET);
-						String entrada2 = in.nextLine(); 
-						selecao2 = Integer.parseInt(entrada2);					
+						selecao2 = user.lerInteiroSM(in);				
 						switch(selecao2) {
 						case 1:
 							user.sacarSaldo();
@@ -115,8 +113,7 @@ public class GeneralMenu {
 						System.out.println(BLUE + BOLD + "=".repeat(43));
 						System.out.println("Usuário: " + user.getApelido());
 						System.out.println("=".repeat(43) + RESET);
-						String entrada3 = in.nextLine(); 
-						selecao3 = Integer.parseInt(entrada3);
+						selecao3 = user.lerInteiroSM(in);	
 						switch(selecao3) {
 						case 1:
 							beta.bet(user);
@@ -147,13 +144,12 @@ public class GeneralMenu {
 						System.out.println(YELLOW + "[1] (🛍️) - Comprar produtos;");
 						System.out.println("[2] (✅) - Posses;");
 						System.out.println("[3] (📝) - Recadastrar dados;");
-						System.out.println("[4] (🎁)- Resgatar códigos;");
+						System.out.println("[4] (🎁) - Resgatar códigos;");
 						System.out.println("[5] (🔚) - Sair." + RESET);
 						System.out.println(BLUE + BOLD + "===========================================");
 						System.out.println("Usuário: " + user.getApelido());
 						System.out.println("===========================================" + RESET);
-						String entrada4 = in.nextLine(); 
-						selecao4 = Integer.parseInt(entrada4);
+						selecao4 = user.lerInteiroSM(in);	
 						switch(selecao4) {
 						case 1:
 							while (loja) {
@@ -162,8 +158,7 @@ public class GeneralMenu {
 								System.out.println("===========================================");
 								System.out.println("Digite o número do item que deseja resgatar, ou digite -1 para voltar ao menu anterior.");
 								
-								int item = in.nextInt();
-								in.nextLine();
+								int item = user.lerInteiroSM(in);
 
 								if (item == -1) {
 									System.out.println("Retornando ao menu principal da Loja da Betinha...");
@@ -174,7 +169,7 @@ public class GeneralMenu {
 
 								if (!sucesso) {
 									System.out.println("Deseja tentar novamente? (s/n)");
-									String resposta = in.nextLine().trim().toLowerCase();
+									String resposta = user.lerTextoSMLowerCase(in);
 									if (!resposta.equals("s")) {
 										System.out.println("Retornando ao menu da loja...");
 										break;
@@ -207,7 +202,7 @@ public class GeneralMenu {
 									if (decisaon == true) {
 										System.out.println("===========================================");
 										System.out.println("Para qual nome gostaria de alterar?");
-										String s = in.nextLine();
+										String s =  user.lerTextoSM(in);
 										user.setNome(s);
 										System.out.println("===========================================");
 										System.out.println("Nome alterado com sucesso!");
@@ -223,7 +218,7 @@ public class GeneralMenu {
 									if (decisaoa == true) {
 										System.out.println("===========================================");
 										System.out.println("Para qual apelido gostaria de alterar?");
-										String ap = in.nextLine();
+										String ap =  user.lerTextoSM(in);
 										user.setApelido(ap);
 										System.out.println("===========================================");
 										System.out.println("Apelido alterado com sucesso!");
@@ -242,8 +237,8 @@ public class GeneralMenu {
 									in.nextLine();
 									if (decisaoe == true) {
 										System.out.println("===========================================");
-										System.out.println("Para qual nome gostaria de alterar?");
-										String em = in.nextLine();
+										System.out.println("Para qual e-mail gostaria de alterar?");
+										String em = user.lerTextoSM(in);
 										user.setEMAIL(em);
 										System.out.println("===========================================");
 										System.out.println("E-mail alterado com sucesso!");
@@ -259,8 +254,8 @@ public class GeneralMenu {
 									if (decisaot == true) {
 										System.out.println("===========================================");
 										System.out.println("Para qual telefone gostaria de alterar?");
-										String t = in.nextLine();
-										user.setTelefone(entrada1);
+										String t =  user.lerTextoSM(in);
+										user.setTelefone(t);
 										System.out.println("===========================================");
 										System.out.println("Telefone alterado com sucesso!");
 									} else { System.out.println("===========================================");
@@ -275,7 +270,7 @@ public class GeneralMenu {
 									if (decisaoc == true) {
 										System.out.println("===========================================");
 										System.out.println("Para qual CEP gostaria de alterar?");
-										String cep = in.nextLine();
+										String cep =  user.lerTextoSM(in);
 										user.setCEP(cep);
 										System.out.println("===========================================");
 										System.out.println("CEP alterado com sucesso!");
@@ -291,7 +286,7 @@ public class GeneralMenu {
 									if (decisaol == true) {
 										System.out.println("===========================================");
 										System.out.println("Para qual logradouro gostaria de alterar?");
-										String l = in.nextLine();
+										String l =  user.lerTextoSM(in);
 										user.setLogradouro(l);
 										System.out.println("===========================================");
 										System.out.println("Logradouro alterado com sucesso!");
@@ -307,7 +302,7 @@ public class GeneralMenu {
 									if (decisaosc == true) {
 										System.out.println("===========================================");
 										System.out.println("Para qual senha gostaria de alterar?");
-										String sc = in.nextLine();
+										String sc = user.lerTextoSM(in);
 										user.setSenhaConta(sc);
 										System.out.println("===========================================");
 										System.out.println("Senha alterada com sucesso!");
@@ -358,8 +353,7 @@ public class GeneralMenu {
 						System.out.println(BLUE + BOLD + "===========================================");
 						System.out.println("Usuário: " + user.getApelido());
 						System.out.println("===========================================" + RESET);
-						String entrada5 = in.nextLine(); 
-						selecao5 = Integer.parseInt(entrada5);
+						selecao5 = user.lerInteiroSM(in);	
 						switch(selecao5) {
 						case 1:
 							System.out.println("======================================");
@@ -370,14 +364,14 @@ public class GeneralMenu {
 						case 2: 
 							System.out.println("======================================");
 							System.out.println("Nosso sistema possui três jogos sinistros (que podem ser jogados apenas uma vez, em cada opção):");
-							System.out.print("1 - A clássica BET, na qual você seleciona um dos jogos de hoje (de qualquer liga, de qualquer esporte) \n====================================== \n2 - O jogo de adivinhação numérica, em que um número é ramdomizado e você deve acertá-lo (ou, ao menos, aproximar-se dele, excetuando-se em 'Adivinhação fácil') em um certo número de tentativas. \nCaso o palpite seja exato, o multiplicador máximo é concedido ao seu SALDO DE APOSTAS. \nQuanto mais distante o palpite for do número sorteado, menor o multipicador. \nSe não tiver conseguido se aproximar nem acertar exatamente, todo o saldo apostado é perdido. \n====================================== \n 3 - A aposta especial, na qual você não deposita dinheiro, mas pode ganhar uma quantia significativa ao acertar a senha secreta. \n ");
+							System.out.print("1 - A clássica BET, na qual você seleciona um dos jogos de hoje (de qualquer liga, de qualquer esporte) \n====================================== \n2 - O jogo de adivinhação numérica, em que um número é ramdomizado e você deve acertá-lo (ou, ao menos, aproximar-se dele, excetuando-se em 'Adivinhação fácil') em um certo número de tentativas. \nCaso o palpite seja exato, o multiplicador máximo é concedido ao seu SALDO DE APOSTAS. \nQuanto mais distante o palpite for do número sorteado, menor o multipicador. \nSe não tiver conseguido se aproximar nem acertar exatamente, todo o saldo apostado é perdido. \n====================================== \n3 - A aposta especial, na qual você não deposita dinheiro, mas pode ganhar uma quantia significativa ao acertar a senha secreta. \n");
 							System.out.println("======================================");
 							break;
 						case 3: 
 							System.out.println("======================================");
 							System.out.println("Valendo-se de seu SALDO DE APOSTAS, você pode ~~(desperdiçar)~~ gastar seu dinheiro com itens (in)úteis!!!");
 							System.out.print("Garanta que seu SALDO DE APOSTAS seja diferente de zero. \n5000 reais são disponíveis gratuitamente a todos os usuários, e você pode depositá-los (completa ou parcialmente) no seu SALDO DE APOSTAS através da opção 'depositar' no menu da BankTinha. \n");
-							System.out.println("Além disso, você pode, através da loja, verificar as posses adquiridas na loja, alterar suas informações de cadastro e resgatar códigos, os quais podem lhe conceder alguma bonificação ;) \n");
+							System.out.print("Além disso, você pode, através da loja, verificar as posses adquiridas na loja, alterar suas informações de cadastro e resgatar códigos, os quais podem lhe conceder alguma bonificação ;) \n");
 							System.out.println("======================================");
 							break;
 						case 4:
@@ -410,7 +404,3 @@ public class GeneralMenu {
 		System.out.println("=".repeat(43) + RESET);
 	}
 }
-	}
-	}
-}
-	
