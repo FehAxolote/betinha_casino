@@ -66,7 +66,7 @@ public class GeneralMenu {
 						System.out.println(GREEN + BOLD + "Selecione uma das opções a seguir:" + RESET);
 						System.out.println(GREEN + "🏦".repeat(43) + RESET);
 						System.out.println(GREEN + BOLD + "💎 Bem-vindo ao MENU da BankTinha 💎!" + RESET);
-						System.out.println(GREEN + "[1] (🪙)- Sacar do SALDO DE APOSTAS;");
+						System.out.println(GREEN + "[1] (🪙) - Sacar do SALDO DE APOSTAS;");
 						System.out.println("[2] (💰) - Depositar no SALDO DE APOSTAS;");
 						System.out.println("[3] (📊) - Verificar saldo;");
 						System.out.println("[4] (🔓) - Desbloquear cartao;");
