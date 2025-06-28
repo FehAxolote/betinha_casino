@@ -141,7 +141,7 @@ public class Bet {
 			    if (resultado.equals("A")) {
 			        multiplicadorCF = oddACF;
 			        System.out.println("===========================================");
-			        System.out.println(PURPLE + "Nelson Mandela deu capa em metade do server e venceu! 🥇" + RESET);
+			        System.out.println(PURPLE + "Nelson Mandela deu capa em metade do server e venceu! Talvez com o efeito Mandela... 🥇" + RESET);
 			        System.out.println("===========================================");
 			    } else {
 			        multiplicadorCF = oddBCF;
