@@ -220,8 +220,8 @@ public class Bet {
 				System.out.println("=========================================");
 				System.out.println("Em quem você aposta? (Porcentagens de vitória entre parênteses.)");
 				System.out.println("===========================================");
-			    System.out.printf(GREEN + "A - 🧣Ralsei ???? (%.1f%%) -> ODD = %.3fx\n" + RESET, porcentagemPPA, oddAPP);
-			    System.out.printf(BLUE + "B - ❤️Kris Dreemurr (%.1f%%) -> ODD = %.3fx\n" + RESET, (100 - porcentagemPPA), oddBPP);
+			    System.out.printf(BLUE + "A - 🇬🇷Aristóteles (%.1f%%) -> ODD = %.3fx\n" + RESET, porcentagemPPA, oddAPP);
+			    System.out.printf(GREEN + "B - 🇧🇷Raiam Santos (%.1f%%) -> ODD = %.3fx\n" + RESET, (100 - porcentagemPPA), oddBPP);
 				System.out.println("===========================================");
 				escolha = user.lerTextoSMUpperCase(in);
 				user.aposta();
@@ -236,12 +236,12 @@ public class Bet {
 			    if (resultado.equals("A")) {
 			        multiplicadorPP = oddAPP;
 			        System.out.println("===========================================");
-			        System.out.println(GREEN + "Ralsei ???? ganhou! (Contra a vontade dele.)" + RESET);
+			        System.out.println(BLUE + "Aristóteles, no ato de ser e na potência de ganhar, venceu o jogo. Certamente é virtuoso. 🎖" + RESET);
 			        System.out.println("===========================================");
 			    } else {
 			        multiplicadorPP = oddBPP;
 			        System.out.println("===========================================");
-			        System.out.println(BLUE + "Kris Dreemurr ganhou! (Ralsei ficou feliz com o resultado.)" + RESET);
+			        System.out.println(GREEN + "Não sei como isso aconteceu, mas Raiam Santos venceu! Definitivamente se trata de uma questão de geopolítica. 🌎" + RESET);
 			        System.out.println("===========================================");
 			    }
 
