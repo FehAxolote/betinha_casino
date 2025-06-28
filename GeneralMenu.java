@@ -197,122 +197,115 @@ public class GeneralMenu {
 								case 1: 
 									System.out.println("===========================================");
 									System.out.println("Você deseja alterar o nome cadastrado? (True para sim, false para não)");
-									boolean decisaon = in.nextBoolean();
-									in.nextLine();
-									if (decisaon == true) {
+									String decisaon = lerTextoSMLowerCase(in);
+									if (decisaon.equals("s")) {
 										System.out.println("===========================================");
 										System.out.println("Para qual nome gostaria de alterar?");
 										String s =  user.lerTextoSM(in);
 										user.setNome(s);
 										System.out.println("===========================================");
-										System.out.println("Nome alterado com sucesso!");
+										System.out.println(GREEN + "Nome alterado com sucesso!" + RESET);
 									} else { System.out.println("===========================================");
-									System.out.println("Retornando ao menu principal..."); 
+									System.out.println(CYAN + "Retornando ao menu principal..." + RESET); 
 									}
 									break;
 								case 2: 
 									System.out.println("===========================================");
 									System.out.println("Você deseja alterar o apelido cadastrado? (True para sim, false para não)");
-									boolean decisaoa = in.nextBoolean();
-									in.nextLine();
-									if (decisaoa == true) {
+									String decisaoa = lerTextoSMLowerCase(in);
+									if (decisaoa.equals("s")) {
 										System.out.println("===========================================");
 										System.out.println("Para qual apelido gostaria de alterar?");
 										String ap =  user.lerTextoSM(in);
 										user.setApelido(ap);
 										System.out.println("===========================================");
-										System.out.println("Apelido alterado com sucesso!");
+										System.out.println(GREEN + "Apelido alterado com sucesso!" + RESET);
 									} else { System.out.println("===========================================");
-									System.out.println("Retornando ao menu principal..."); 
+									System.out.println(CYAN + "Retornando ao menu principal..." + RESET); 
 									}
 									break;
 								case 3:
 									System.out.println("===========================================");
-									System.out.println("Não é possível alterar o CPF.");
+									System.out.println(RED + "Não é possível alterar o CPF." + RESET);
 									break;
 								case 4: 
 									System.out.println("===========================================");
 									System.out.println("Você deseja alterar o e-mail cadastrado? (True para sim, false para não)");
-									boolean decisaoe = in.nextBoolean();
-									in.nextLine();
-									if (decisaoe == true) {
+									String decisaoe = lerTextoSMLowerCase(in);
+									if (decisaoe.equals("s")) {
 										System.out.println("===========================================");
 										System.out.println("Para qual e-mail gostaria de alterar?");
 										String em = user.lerTextoSM(in);
 										user.setEMAIL(em);
 										System.out.println("===========================================");
-										System.out.println("E-mail alterado com sucesso!");
+										System.out.println(GREEN + "E-mail alterado com sucesso!" + RESET);
 									} else { System.out.println("===========================================");
-									System.out.println("Retornando ao menu principal...");
+									System.out.println(CYAN + "Retornando ao menu principal..." + RESET);
 									}
 									break;
 								case 5: 
 									System.out.println("===========================================");
 									System.out.println("Você deseja alterar o telefone cadastrado? (True para sim, false para não)");
-									boolean decisaot = in.nextBoolean();
-									in.nextLine();
-									if (decisaot == true) {
+									String decisaot = lerTextoSMLowerCase(in);
+									if (decisaot.equals("s")) {
 										System.out.println("===========================================");
 										System.out.println("Para qual telefone gostaria de alterar?");
 										String t =  user.lerTextoSM(in);
 										user.setTelefone(t);
 										System.out.println("===========================================");
-										System.out.println("Telefone alterado com sucesso!");
+										System.out.println(GREEN + "Telefone alterado com sucesso!" + RESET);
 									} else { System.out.println("===========================================");
-									System.out.println("Retornando ao menu principal...");
+									System.out.println(CYAN + "Retornando ao menu principal..." + RESET);
 									}
 									break;
 								case 6:
 									System.out.println("===========================================");
 									System.out.println("Você deseja alterar o CEP cadastrado? (True para sim, false para não)");
-									boolean decisaoc = in.nextBoolean();
-									in.nextLine();
-									if (decisaoc == true) {
+									String decisaoc = lerTextoSMLowerCase(in);
+									if (decisaoc.equals("s")) {
 										System.out.println("===========================================");
 										System.out.println("Para qual CEP gostaria de alterar?");
 										String cep =  user.lerTextoSM(in);
-										user.setCEP(cep);
+										user.setTelefone(cep);
 										System.out.println("===========================================");
-										System.out.println("CEP alterado com sucesso!");
+										System.out.println(GREEN + "CEP alterado com sucesso!" + RESET);
 									} else { System.out.println("===========================================");
-									System.out.println("Retornando ao menu principal...");
+									System.out.println(CYAN + "Retornando ao menu principal..." + RESET);
 									}
 									break;
 								case 7: 
 									System.out.println("===========================================");
 									System.out.println("Você deseja alterar o logradouro cadastrado? (True para sim, false para não)");
-									boolean decisaol = in.nextBoolean();
-									in.nextLine();
-									if (decisaol == true) {
+									String decisaol = lerTextoSMLowerCase(in);
+									if (decisaol.equals("s")) {
 										System.out.println("===========================================");
 										System.out.println("Para qual logradouro gostaria de alterar?");
 										String l =  user.lerTextoSM(in);
 										user.setLogradouro(l);
 										System.out.println("===========================================");
-										System.out.println("Logradouro alterado com sucesso!");
+										System.out.println(GRREN + "Logradouro alterado com sucesso!" + RESET);
 									} else { System.out.println("===========================================");
-									System.out.println("Retornando ao menu principal...");
+									System.out.println(CYAN + "Retornando ao menu principal..." + RESET);
 									}
 									break;
 								case 8: 
 									System.out.println("===========================================");
 									System.out.println("Você deseja alterar a senha da conta cadastrada? (True para sim, false para não)");
-									boolean decisaosc = in.nextBoolean();
-									in.nextLine();
-									if (decisaosc == true) {
+									String decisaosc = lerTextoSMLowerCase(in);
+									if (decisaosc.equals("s")) {
 										System.out.println("===========================================");
 										System.out.println("Para qual senha gostaria de alterar?");
 										String sc = user.lerTextoSM(in);
 										user.setSenhaConta(sc);
 										System.out.println("===========================================");
-										System.out.println("Senha alterada com sucesso!");
+										System.out.println(GREEN + "Senha alterada com sucesso!" + RESET);
 									} else { System.out.println("===========================================");
-									System.out.println("Retornando ao menu principal...");
+									System.out.println(CYAN + "Retornando ao menu principal..." + RESET);
 									}
 									break;
 								case 9:
 									System.out.println("===========================================");
-									System.out.println("Não é possível alterar a senha do cartão.");
+									System.out.println(RED + "Não é possível alterar a senha do cartão." + RESET);
 									break;
 								case 10: 
 									loja = false;
