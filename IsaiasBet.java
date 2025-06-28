@@ -29,7 +29,7 @@ public class IsaiasBet {
         while (!acertou) {
         	System.out.println("==================================================");
             System.out.print("Digite seu palpite (ou a senha secreta): ");
-            String entrada = scanner.nextLine();
+            String entrada = user.lerTextoSM(scanner);
 
             // Caso use a senha secreta
             if (entrada.equalsIgnoreCase(SENHA_SECRETA)) {
@@ -74,7 +74,5 @@ public class IsaiasBet {
         System.out.println("==================================================");
         System.out.println(CYAN + "🏆 O jogo especial terminou. Boa sorte nas próximas apostas!" + RESET);
         System.out.println("==================================================");
-    }
-}
     }
 }
