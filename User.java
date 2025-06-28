@@ -26,7 +26,7 @@ public class User {
 	int aleatorioMensagem = random.nextInt(4) + 1;
 	//
 	//viagem temporal
-	boolean viagemTemporal = false;
+	String viagemTemporal;
 	
 	//-var operacionais-
 	//
@@ -83,33 +83,23 @@ public class User {
 		System.out.println(RESET + "======================================");
 		System.out.println("Para usufruir desse sistema genial, insira seus dados nos campos a seguir.");
 		System.out.println("======================================");
-		System.out.print(CYAN + "Nome do usuário: " + RESET);
-		this.nome = in.nextLine();
-		System.out.print(CYAN + "Apelido: " + RESET);
-		this.setApelido(in.nextLine());
-		System.out.print(CYAN + "CPF: " + RESET);
+		this.nome = lerTexto(in, CYAN + "Nome do usuário: " + RESET);
+		this.apelido = lerTexto(in, CYAN + "Apelido: " + RESET);
+		this.cpf = lerTexto(in, CYAN + "CPF: " + RESET);
 		int menoridade = random.nextInt(10) + 1;
-		this.cpf = in.nextLine();
-		System.out.print(CYAN + "E-mail: " + RESET);
-		this.email = in.nextLine();
-		System.out.print(CYAN + "Telefone: " + RESET);
-		this.telefone = in.nextLine();
-		System.out.print(CYAN + "CEP: " + RESET);
-		this.cep = in.nextLine();
-		System.out.print(CYAN + "Logradouro: " + RESET);
-		this.logradouro = in.nextLine();
-		System.out.print(CYAN + "Senha da conta: " + RESET);
-		this.senhaConta = in.nextLine();
-		System.out.print(CYAN + "Senha do cartão (obs.: esta senha não poderá ser redefinida): " + RESET);
-		this.senhaCartao = in.nextLine();
+		this.email = lerTexto(in, CYAN + "E-mail: " + RESET);
+		this.telefone = lerTexto(in, CYAN + "Telefone: " + RESET);
+		this.cep = lerTexto(in, CYAN + "CEP: " + RESET);
+		this.logradouro = lerTexto(in, CYAN + "Logradouro: " + RESET);
+		this.senhaConta = lerTexto(in, CYAN + "Senha da conta: " + RESET);
+		this.senhaCartao = lerTexto(in, CYAN + "Senha do cartão: " + RESET);
 		if (menoridade == 1) {
 			System.out.println(RED + "===========================================");
 			System.out.println("Na consulta à Receita Federal, você é menor de 18 anos. Não será possível utilizar a Betinha no prazo de " + aleatorioMenorIdade + " anos.");
 			System.out.println("===========================================");
-			System.out.println(RESET + "Viajar no tempo? (True para sim, false para não.)");
-			viagemTemporal = in.nextBoolean();
-			in.nextLine();
-			if (viagemTemporal == true) {
+			System.out.println(RESET + "Viajar no tempo? (s/n)");
+			viagemTemporal = lerTextoSMLowerCase(in);
+			if (viagemTemporal.equals("s")) {
 				System.out.println(BLUE + "Você decide, imprudentemente, entrar num buraco de minhoca para jogar num cassino... Vamos ver na onde isso dá." + RESET);
 				System.out.println("======================================");
 				if (aleatorioViagemTemporal == 3) {
@@ -160,7 +150,7 @@ public class User {
 				System.out.println(RED + "Usuário e/ou senha incorretos. Tentativas restantes: " + tentativasRestantesLogin + RESET);
 				System.out.println("===========================================");
 				tentativasRestantesLogin = (MAX_TENTATIVAS - tentativasLogin) + 1;
-			} else if (senhaConta.equals(senhaDigitada) && nome.equals(nomeDigitado) && tentativasRestantesLogin > 0)  {
+			} else if (senhaConta.equals(senhaDigitada) && apelido.equals(nomeDigitado) && tentativasRestantesLogin > 0)  {
 				login = true;
 				System.out.println(GREEN + "Log-in bem sucedido!" + RESET);
 			} else if (tentativasLogin == MAX_TENTATIVAS) {
@@ -178,7 +168,7 @@ public class User {
 		int tentativasRestantes = MAX_TENTATIVAS - tentativas;
 		System.out.println("======================================");
 		System.out.print ("Insira a quantidade que você deseja sacar do seu saldo de apostas: ");
-		double s = in.nextDouble();
+		double s = lerDoubleSM(in);
 		in.nextLine();
 		System.out.println("===========================================");
 		System.out.print("Confirme sua senha (senha do cartão): ");
@@ -241,8 +231,7 @@ public class User {
 		int tentativasRestantes = MAX_TENTATIVAS - tentativas;
 		System.out.println("======================================");
 		System.out.print("Insira a quantidade que você deseja depositar para apostar: ");
-		double s = in.nextDouble();
-		in.nextLine();
+		double s = lerDoubleSM(in);
 		System.out.println("===========================================");
 		System.out.print("Confirme sua senha (senha do cartão): ");
 		senhaCartaoDigitada = in.nextLine();
@@ -382,7 +371,7 @@ public class User {
 		b = true;
 		while ((bloqueioDefinitivo == false && b == true) && cartaoBloqueado == true) {
 		System.out.println("======================================");
-		System.out.print("Para desbloquear seu cartao, insira a senha da sua conta a seguir: ");
+		System.out.print("Para desbloquear seu cartão, insira a senha da sua conta a seguir: ");
 		String senhaContaDigitada = in.nextLine();
 		System.out.println("======================================");
 			if (senhaContaDigitada.equals(senhaConta)) {
@@ -408,7 +397,7 @@ public class User {
 	//hora da aposta
 	public void aposta() {
 		System.out.println("Quanto você deseja apostar?");
-		valorAposta = in.nextDouble();
+		valorAposta = lerDoubleSM(in);
 		if (valorAposta <= this.valorDeposito) {
 			valorDeposito -= valorAposta;
 			System.out.println("======================================");
@@ -484,5 +473,128 @@ public class User {
 		public void depositarBonus(double valor) {
 		    this.saldo += valor;
 		}
+		
+		public static String lerTexto(Scanner in, String mensagem) {
+		    String entrada;
+		    do {
+		        System.out.print(mensagem);
+		        entrada = in.nextLine().trim();
+		        if (entrada.isEmpty()) {
+		            System.out.println(RED + "❌ Campo não pode ser vazio! Tente novamente." + RESET);
+		        }
+		    } while (entrada.isEmpty());
+		    return entrada;
+		}
+		
+		public static String lerTextoSM(Scanner in) {
+		    String entrada;
+		    do {
+		        entrada = in.nextLine().trim();
+		        if (entrada.isEmpty()) {
+		            System.out.println(RED + "❌ Campo não pode ser vazio! Tente novamente." + RESET);
+		        }
+		    } while (entrada.isEmpty());
+		    return entrada;
+		}
+		
+		public static String lerTextoSMUpperCase(Scanner in) {
+		    String entrada;
+		    do {
+		        entrada = in.nextLine().trim();
+		        if (entrada.isEmpty()) {
+		            System.out.println(RED + "❌ Campo não pode ser vazio! Tente novamente." + RESET);
+		        }
+		    } while (entrada.isEmpty());
+		    return entrada.toUpperCase();
+		}
+		
+		public static String lerTextoSMLowerCase(Scanner in) {
+		    String entrada;
+		    do {
+		        entrada = in.nextLine().trim();
+		        if (entrada.isEmpty()) {
+		            System.out.println(RED + "❌ Campo não pode ser vazio! Tente novamente." + RESET);
+		        }
+		    } while (entrada.isEmpty());
+		    return entrada.toLowerCase();
+		}
+		
+		public static int lerInteiroSM(Scanner in) {
+		    int valor = -1;
+		    boolean valido = false;
+		    while (!valido) {
+		        String entrada = in.nextLine().trim();
+		        try {
+		            valor = Integer.parseInt(entrada);
+		            valido = true;
+		        } catch (NumberFormatException e) {
+		            System.out.println(RED + "❌ Valor inválido. Digite um número inteiro!" + RESET);
+		        }
+		    }
+		    return valor;
+		}
+		
+		public static int lerInteiro(Scanner in, String mensagem) {
+		    int valor = -1;
+		    boolean valido = false;
+		    while (!valido) {
+		        System.out.println(mensagem);
+		        String entrada = in.nextLine().trim();
+		        try {
+		            valor = Integer.parseInt(entrada);
+		            valido = true;
+		        } catch (NumberFormatException e) {
+		            System.out.println(RED + "❌ Valor inválido. Digite um número inteiro!" + RESET);
+		        }
+		    }
+		    return valor;
+		}
+		
+		public static double lerDouble(Scanner in, String mensagem) {
+		    double valor = 0;
+		    boolean valido = false;
 
+		    while (!valido) {
+		        System.out.print(mensagem + " ");
+		        String entrada = in.nextLine().trim();
+
+		        if (entrada.isEmpty()) {
+		            System.out.println(RED + "❌ Campo não pode ser vazio! Tente novamente." + RESET);
+		            continue;
+		        }
+
+		        try {
+		            valor = Double.parseDouble(entrada.replace(',', '.')); // aceita ',' como separador decimal
+		            valido = true;
+		        } catch (NumberFormatException e) {
+		            System.out.println(RED + "❌ Valor inválido! Digite um número (use . ou , como separador decimal)." + RESET);
+		        }
+		    }
+
+		    return valor;
+		}
+		
+		public static double lerDoubleSM(Scanner in) {
+		    double valor = 0;
+		    boolean valido = false;
+
+		    while (!valido) {
+		        String entrada = in.nextLine().trim();
+
+		        if (entrada.isEmpty()) {
+		            System.out.println(RED + "❌ Campo não pode ser vazio! Tente novamente." + RESET);
+		            continue;
+		        }
+
+		        try {
+		            valor = Double.parseDouble(entrada.replace(',', '.')); // aceita ',' como separador decimal
+		            valido = true;
+		        } catch (NumberFormatException e) {
+		            System.out.println(RED + "❌ Valor inválido! Digite um número (use . ou , como separador decimal)." + RESET);
+		        }
+		    }
+
+		    return valor;
+		}
+	
 }
