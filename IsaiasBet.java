@@ -37,7 +37,7 @@ public class IsaiasBet {
                     user.depositarBonus(BONUS); 
                     jaUsouSenha = true;
                     System.out.println("==================================================");
-                    System.out.println(GREEN + "🎁 Você ativou a senha secreta! R$3000 foram adicionados ao seu saldo de aposta." + RESET);
+                    System.out.println(GREEN + "🎁 Você ativou a senha secreta! R$3000 foram adicionados ao seu saldo principal." + RESET);
                     System.out.printf(GREEN + "Saldo atual: R$%.2f\n" + RESET, user.getSaldo());
                     System.out.println("==================================================");
                 } else {
