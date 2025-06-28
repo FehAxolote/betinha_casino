@@ -12,7 +12,7 @@ public class BetinhaStore {
     private String[] premios = {"(⏰) Relógio", "(🎧) Fone de ouvido", "(📱) Celular", "(💻) PC Gamer", "(🧣) Pelúcia do Ralsei"};
     private double[] custos = {2000.0, 3500.0, 25000.0, 50000.0, 99999.0};
     private int[] estoque = {50, 50, 50, 50, 1}; // Estoque inicial para cada prêmio
-    private int[] posses = {0, 0, 0};
+    private int[] posses = {0, 0, 0, 0, 0};
 
     public void mostrarPremios(User user) {
         System.out.println("Prêmios disponíveis:");
