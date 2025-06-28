@@ -8,9 +8,9 @@ public class BetinhaStore {
     public static final String PURPLE = "\u001B[35m";
     public static final String CYAN = "\u001B[36m";
     public static final String BOLD = "\u001B[1m";
-    private String[] premios = {"Relógio", "Fone de ouvido", "Celular"};
-    private double[] custos = {2000.0, 3500.0, 25000.0};
-    private int[] estoque = {5, 3, 2}; // Estoque inicial para cada prêmio
+    private String[] premios = {"Relógio", "Fone de ouvido", "Celular", "PC Gamer", "Pelúcia do Ralsei"};
+    private double[] custos = {2000.0, 3500.0, 25000.0, 50000.0, 99999.0};
+    private int[] estoque = {50, 50, 50, 50, 1}; // Estoque inicial para cada prêmio
     private int[] posses = {0, 0, 0};
 
     public void mostrarPremios(User user) {
