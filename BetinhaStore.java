@@ -78,13 +78,6 @@ public class BetinhaStore {
             System.out.printf(YELLOW + "%d - %s | Quantidade: %d\n"  + RESET, (i + 1), premios[i], posses[i]);
         }
         System.out.println("==================================================");
-    }
-    
-    
-}
-
-        }
-        return true;
-    }
+    }  
 }
 
