@@ -49,9 +49,7 @@ public class BettingGame {
 			System.out.println("=========================================");
 			System.out.printf(YELLOW + BOLD + "Saldo de apostas atual: R$%.2f\n"  + RESET, user.getSaldoAposta());
 			System.out.println("=========================================");
-			String entrada = i.nextLine(); 
-			opcao = Integer.parseInt(entrada);
-			
+			opcao = user.lerInteiroSM(i);			
 			switch(opcao) {
 			
 			case 1: 
@@ -62,8 +60,7 @@ public class BettingGame {
 			do {
 				System.out.println("==================================================");
 				System.out.println("Pense em um numero de 1 a 12 e digite-o a seguir:");
-				String palpiteStr1 = i.nextLine();
-				numeroDigitado = Integer.parseInt(palpiteStr1);
+				numeroDigitado = user.lerInteiroSM(i);
 				int distancia1 = Math.abs(numeroDigitado - numeroSorteado_drop1);
 					if (numeroDigitado == numeroSorteado_drop1 && tentativas_drop1 > MAX_TENTATIVAS) {
 						confirmacao1 = false;
@@ -82,7 +79,7 @@ public class BettingGame {
 						}
 					tentativas_drop1--;
 					System.out.println("==================================================");
-					System.out.println("Você errou. Tentativas restantes: " +tentativas_drop1);
+					System.out.println(RED + "Você errou. Tentativas restantes: " + tentativas_drop1 + RESET);
 					}
 			} while(numeroDigitado != numeroSorteado_drop1 && tentativas_drop1 > MAX_TENTATIVAS);
 			if (confirmacao1) {
@@ -115,8 +112,7 @@ public class BettingGame {
 				do {
 					System.out.println("==================================================");
 					System.out.println("Pense em um numero de 1 a 50 e digite-o a seguir:");
-					String palpiteStr2 = i.nextLine();
-					numeroDigitado = Integer.parseInt(palpiteStr2);
+					numeroDigitado = user.lerInteiroSM(i);
 					int distancia2 = Math.abs(numeroDigitado - numeroSorteado_drop2);
 						if (numeroDigitado == numeroSorteado_drop2 && tentativas_drop2 > MAX_TENTATIVAS) {
 							confirmacao2 = false;
@@ -170,8 +166,7 @@ public class BettingGame {
 				do {
 					System.out.println("==================================================");
 					System.out.println("Pense em um numero de 1 a 100 e digite-o a seguir:");
-					String palpiteStr3 = i.nextLine();
-					numeroDigitado = Integer.parseInt(palpiteStr3);
+					numeroDigitado = user.lerInteiroSM(i);
 					int distancia3 = Math.abs(numeroDigitado - numeroSorteado_drop3);
 						if (numeroDigitado == numeroSorteado_drop3 && tentativas_drop3 > MAX_TENTATIVAS) {
 							confirmacao3 = false;
@@ -225,8 +220,7 @@ public class BettingGame {
 				do {
 					System.out.println("==================================================");
 					System.out.println("Pense em um numero de 1 a 250 e digite-o a seguir:");
-					String palpiteStr4 = i.nextLine();
-					numeroDigitado = Integer.parseInt(palpiteStr4);
+					numeroDigitado = user.lerInteiroSM(i);
 					int distancia4 = Math.abs(numeroDigitado - numeroSorteado_drop4);
 						if (numeroDigitado == numeroSorteado_drop4 && tentativas_drop4 > MAX_TENTATIVAS) {
 							confirmacao4 = false;
@@ -280,8 +274,7 @@ public class BettingGame {
 				do {
 					System.out.println("==================================================");
 					System.out.println("Pense em um numero de 1 a 500 e digite-o a seguir:");
-					String palpiteStr5 = i.nextLine();
-					numeroDigitado = Integer.parseInt(palpiteStr5);
+					numeroDigitado = user.lerInteiroSM(i);
 					int distancia5 = Math.abs(numeroDigitado - numeroSorteado_drop5);
 						if (numeroDigitado == numeroSorteado_drop5 && tentativas_drop5 > MAX_TENTATIVAS) {
 							confirmacao5 = false;
@@ -329,4 +322,5 @@ public class BettingGame {
 			} 
 		} System.out.println("Sistema encerrado.");
 	}
+}
 }
