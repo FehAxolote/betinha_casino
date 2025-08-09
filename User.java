@@ -83,13 +83,13 @@ public class User {
 		System.out.println(RESET + "======================================");
 		System.out.println("Para usufruir desse sistema genial, insira seus dados nos campos a seguir.");
 		System.out.println("======================================");
-		this.nome = lerTexto(in, CYAN + "Nome do usuário: " + RESET);
+		this.nome = lerTextoPuro(in, CYAN + "Nome do usuário: " + RESET);
 		this.apelido = lerTexto(in, CYAN + "Apelido: " + RESET);
-		this.cpf = lerTexto(in, CYAN + "CPF: " + RESET);
+		this.cpf = lerNumeroPuro(in, CYAN + "CPF: " + RESET);
 		int menoridade = random.nextInt(10) + 1;
 		this.email = lerTexto(in, CYAN + "E-mail: " + RESET);
-		this.telefone = lerTexto(in, CYAN + "Telefone: " + RESET);
-		this.cep = lerTexto(in, CYAN + "CEP: " + RESET);
+		this.telefone = lerNumeroPuro(in, CYAN + "Telefone: " + RESET);
+		this.cep = lerNumeroPuro(in, CYAN + "CEP: " + RESET);
 		this.logradouro = lerTexto(in, CYAN + "Logradouro: " + RESET);
 		this.senhaConta = lerTexto(in, CYAN + "Senha da conta: " + RESET);
 		this.senhaCartao = lerTexto(in, CYAN + "Senha do cartão: " + RESET);
@@ -595,5 +595,42 @@ public class User {
 
 		    return valor;
 		}
+
+			
+		
+		public static String lerTextoPuro(Scanner in, String info) {
+			String texto;
+			do {
+				System.out.print(info);
+				texto = in.nextLine();
+				if (!texto.matches("[\\p{L} ]+")) {
+					 System.out.println(RED + "❌ Use apenas letras. Tente novamente." + RESET);
+					 
+				} else if (texto.trim().isEmpty()) {
+					System.out.println(RED + "❌ Campo não pode ser vazio! Tente novamente." + RESET);
+				}
+				
+			} while (!texto.matches("[\\p{L} ]+") || texto.trim().isEmpty());
+			
+				return texto;
 	
+			}
+
+		public static String lerNumeroPuro(Scanner in, String info) {
+			String texto;
+			do {
+				System.out.print(info);
+				texto = in.nextLine();
+				if (!texto.matches("\\d+")) {
+					 System.out.println(RED + "❌ Sao aceitos apenas numeros naturais. Tente novamente." + RESET);
+					 
+				} else if (texto.trim().isEmpty()) {
+					System.out.println(RED + "❌ Campo não pode ser vazio! Tente novamente." + RESET);
+				}
+				
+			} while (!texto.matches("\\d+") || texto.trim().isEmpty());
+			
+				return texto;
+	
+			}
 }
