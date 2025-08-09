@@ -178,7 +178,7 @@ public class GeneralMenu {
 							}
 							break;
 						case 2:
-							lj.mostrarPosses();
+							lj.mostrarPosses(user);
 							break;
 						case 3: 
 							while(cad) {
@@ -197,7 +197,7 @@ public class GeneralMenu {
 								case 1: 
 									System.out.println("===========================================");
 									System.out.println("Você deseja alterar o nome cadastrado? (True para sim, false para não)");
-									String decisaon = lerTextoSMLowerCase(in);
+									String decisaon = user.lerTextoSMLowerCase(in);
 									if (decisaon.equals("s")) {
 										System.out.println("===========================================");
 										System.out.println("Para qual nome gostaria de alterar?");
@@ -212,7 +212,7 @@ public class GeneralMenu {
 								case 2: 
 									System.out.println("===========================================");
 									System.out.println("Você deseja alterar o apelido cadastrado? (True para sim, false para não)");
-									String decisaoa = lerTextoSMLowerCase(in);
+									String decisaoa = user.lerTextoSMLowerCase(in);
 									if (decisaoa.equals("s")) {
 										System.out.println("===========================================");
 										System.out.println("Para qual apelido gostaria de alterar?");
@@ -231,7 +231,7 @@ public class GeneralMenu {
 								case 4: 
 									System.out.println("===========================================");
 									System.out.println("Você deseja alterar o e-mail cadastrado? (True para sim, false para não)");
-									String decisaoe = lerTextoSMLowerCase(in);
+									String decisaoe = user.lerTextoSMLowerCase(in);
 									if (decisaoe.equals("s")) {
 										System.out.println("===========================================");
 										System.out.println("Para qual e-mail gostaria de alterar?");
@@ -246,7 +246,7 @@ public class GeneralMenu {
 								case 5: 
 									System.out.println("===========================================");
 									System.out.println("Você deseja alterar o telefone cadastrado? (True para sim, false para não)");
-									String decisaot = lerTextoSMLowerCase(in);
+									String decisaot = user.lerTextoSMLowerCase(in);
 									if (decisaot.equals("s")) {
 										System.out.println("===========================================");
 										System.out.println("Para qual telefone gostaria de alterar?");
@@ -261,7 +261,7 @@ public class GeneralMenu {
 								case 6:
 									System.out.println("===========================================");
 									System.out.println("Você deseja alterar o CEP cadastrado? (True para sim, false para não)");
-									String decisaoc = lerTextoSMLowerCase(in);
+									String decisaoc = user.lerTextoSMLowerCase(in);
 									if (decisaoc.equals("s")) {
 										System.out.println("===========================================");
 										System.out.println("Para qual CEP gostaria de alterar?");
@@ -276,14 +276,14 @@ public class GeneralMenu {
 								case 7: 
 									System.out.println("===========================================");
 									System.out.println("Você deseja alterar o logradouro cadastrado? (True para sim, false para não)");
-									String decisaol = lerTextoSMLowerCase(in);
+									String decisaol = user.lerTextoSMLowerCase(in);
 									if (decisaol.equals("s")) {
 										System.out.println("===========================================");
 										System.out.println("Para qual logradouro gostaria de alterar?");
 										String l =  user.lerTextoSM(in);
 										user.setLogradouro(l);
 										System.out.println("===========================================");
-										System.out.println(GRREN + "Logradouro alterado com sucesso!" + RESET);
+										System.out.println(GREEN + "Logradouro alterado com sucesso!" + RESET);
 									} else { System.out.println("===========================================");
 									System.out.println(CYAN + "Retornando ao menu principal..." + RESET);
 									}
@@ -291,7 +291,7 @@ public class GeneralMenu {
 								case 8: 
 									System.out.println("===========================================");
 									System.out.println("Você deseja alterar a senha da conta cadastrada? (True para sim, false para não)");
-									String decisaosc = lerTextoSMLowerCase(in);
+									String decisaosc = user.lerTextoSMLowerCase(in);
 									if (decisaosc.equals("s")) {
 										System.out.println("===========================================");
 										System.out.println("Para qual senha gostaria de alterar?");
