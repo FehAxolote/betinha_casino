@@ -63,7 +63,7 @@ public class Bet {
 		System.out.printf(YELLOW + BOLD + "Saldo de apostas atual: R$%.2f\n" + RESET, user.getSaldoAposta());
 		System.out.println("=========================================");
 		selecao = user.lerInteiroSM(in);
-		if (selecao >= 1 && selecao <= 4) {
+		if ((selecao >= 1 && selecao <= 4) || selecao != 5) {
 			a = true;
 		} else {
 			a = false;
@@ -83,6 +83,8 @@ public class Bet {
 				System.out.println("===========================================");
 				escolha = user.lerTextoSMUpperCase(in);
 				user.aposta();
+				
+				if (user.confirmacaoAposta == true && user.confirmacaoValor == true) {
 				//sistema porcentagem
 				if (porcentagemTM >=0 && porcentagemTM <= porcentagemTMA) {
 					resultado = "A";
@@ -110,6 +112,7 @@ public class Bet {
 					validacaoTM = false;
 					user.multiplicador(0);
 				}
+				}
 				} else {
 					System.out.println("===========================================");
 					System.out.println(RED + "Você já jogou este jogo hoje. Tente novamente mais tarde! ;)" + RESET);
@@ -130,6 +133,8 @@ public class Bet {
 				System.out.println("===========================================");
 				escolha = user.lerTextoSMUpperCase(in);
 				user.aposta();
+				
+				if (user.confirmacaoAposta == true && user.confirmacaoValor == true) {
 				//sistema porcentagem
 				if (porcentagemCFA >=0 && porcentagemCF <= porcentagemCFA) {
 					resultado = "A";
@@ -157,6 +162,7 @@ public class Bet {
 					validacaoCF = false;
 					user.multiplicador(0);
 				}
+				}
 				} else {
 					System.out.println("===========================================");
 					System.out.println(RED + "Você já jogou este jogo hoje. Tente novamente mais tarde! ;)" + RESET);
@@ -178,6 +184,8 @@ public class Bet {
 				System.out.println("===========================================");
 				escolha = user.lerTextoSMUpperCase(in);
 				user.aposta();
+				
+				if (user.confirmacaoAposta == true && user.confirmacaoValor == true) {
 				//sistema porcentagem
 				if (porcentagemBRA >=0 && porcentagemBR <= porcentagemBRA) {
 					resultado = "A";
@@ -205,12 +213,14 @@ public class Bet {
 					validacaoBR = false;
 					user.multiplicador(0);
 				}
+				}
 				} else {
 					System.out.println("===========================================");
 					System.out.println(RED + "Você já jogou este jogo hoje. Tente novamente mais tarde! ;)" + RESET);
 					System.out.println("===========================================");
 				}
 				break;
+				
 			case 4:
 				if (validacaoPP == true) {
 				double oddAPP = 100.0 / porcentagemPPA;
@@ -225,6 +235,8 @@ public class Bet {
 				System.out.println("===========================================");
 				escolha = user.lerTextoSMUpperCase(in);
 				user.aposta();
+				
+				if (user.confirmacaoAposta == true && user.confirmacaoValor == true) {
 				//sistema porcentagem
 				if (porcentagemPPA >=0 && porcentagemPP <= porcentagemPPA) {
 					resultado = "A";
@@ -252,11 +264,21 @@ public class Bet {
 					validacaoPP = false;
 					user.multiplicador(0);
 				}
+				}
 				} else { 
 					System.out.println("===========================================");
 					System.out.println(RED + "Você já jogou este jogo hoje. Tente novamente mais tarde! ;)" + RESET);
 					System.out.println("===========================================");
 				}
+				break;
+			case 5:
+				System.out.println("Sistema encerrrado.");
+				break;
+				
+			default: 
+				System.out.println("==================================================");
+				System.out.println("Opção inválida. Tente novamente.");
+				System.out.println("==================================================");
 				break;
 			}
 				
