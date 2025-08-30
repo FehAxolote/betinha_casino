@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 public class IsaiasBet {
 	
+	public static Random random = new Random();
+    public static boolean acertou = false;
+    public static boolean jaUsouSenha = false;
+    
 	public static final String RESET = "\u001B[0m";
     public static final String RED = "\u001B[31m";
     public static final String GREEN = "\u001B[32m";
@@ -17,11 +21,9 @@ public class IsaiasBet {
     private static final int BONUS = 3000;
 
     public static void jogar(User user, Scanner scanner) {
-        Random random = new Random();
-        int numeroParaAdivinhar = random.nextInt(10) + 1;
-        boolean acertou = false;
-        boolean jaUsouSenha = false;
-
+    	acertou = false;
+    	int numeroParaAdivinhar = random.nextInt(10) + 1;
+    	
         System.out.println(YELLOW + BOLD + "\n=== Jogo Especial: Adivinhe o Número ===" + RESET);
         System.out.println(YELLOW + "Tente adivinhar o número entre 1 e 10." + RESET);
         System.out.println(CYAN + "💡 Dica: Digite a senha secreta para ganhar R$3000 de bônus! (Uma única vez)" + RESET);
@@ -33,12 +35,12 @@ public class IsaiasBet {
 
             // Caso use a senha secreta
             if (entrada.equalsIgnoreCase(SENHA_SECRETA)) {
-                if (!user.getSenhaSecretaUsada()) {
+                if (!user.getSenhaSecretaUsada() && jaUsouSenha == false) {
                     user.depositarBonus(BONUS); 
                     jaUsouSenha = true;
                     System.out.println("==================================================");
                     System.out.println(GREEN + "🎁 Você ativou a senha secreta! R$3000 foram adicionados ao seu saldo principal." + RESET);
-                    System.out.printf(GREEN + "Saldo atual: R$%.2f\n" + RESET, user.getSaldo());
+                    System.out.printf(GREEN + "Saldo principal atual: R$%.2f\n" + RESET, user.getSaldo());
                     System.out.println("==================================================");
                 } else {
                 	System.out.println("==================================================");
