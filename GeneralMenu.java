@@ -178,7 +178,7 @@ public class GeneralMenu {
 							}
 							break;
 						case 2:
-							lj.mostrarPosses(user);
+							lj.mostrarPosses();
 							break;
 						case 3: 
 							while(cad) {
@@ -351,7 +351,7 @@ public class GeneralMenu {
 						case 1:
 							System.out.println("======================================");
 							System.out.print("Depende do banco. \nSe for sobre Banco do Brasil, Itaú, Bradesco... acho que não tem como ajudar. \nSe for sobre assento, acho que serve para sentar. \nSe for sobre a BankTinha... ");
-							System.out.print("Todo usuário recebe, gratuitamente, um CARTÃO e um SALDO de 5000 reais para começar a apostar. \nVocê pode depositá-lo integral ou parcialmente, transformando-o em SALDO DE APOSTAS - utilizado na LOJINHA e nos JOGOS, nos quais ele poderá ser multiplicado e, talvez, sacado, através da opção da SAQUE. \n======================================  \nLembre-se da SENHA DO CARTÃO. \nA BankTinha a solicitará toda vez que for sacar ou depositar, e caso haja três erros, seu cartão será BLOQUEADO TEMPORARIAMENTE \nPara desbloqueá-lo, vá à seção DESBLOQUEAR CARTÃO da BankTinha e insira sua SENHA DA CONTA para desbloqueá-lo. \nSe a senha for inserida incorretamente, seu cartão será BLOQUEADO ETERNAMENTE, e você não poderá mais utilizar a betinha. \nAo cartão só lhe restará o churrascamento. \nE ao beta (o que inclui este que os escreve este texto), nada. \n");
+							System.out.print("Todo usuário recebe, gratuitamente, um CARTÃO e um SALDO de 5000 reais para começar a apostar. \nVocê pode depositá-lo integral ou parcialmente, transformando-o em SALDO DE APOSTAS - utilizado na LOJINHA e nos JOGOS, nos quais ele poderá ser multiplicado e, talvez, sacado, através da opção da SAQUE. \n======================================  \nLembre-se da SENHA DO CARTÃO. \nA BankTinha a solicitará toda vez que for sacar ou depositar, e caso haja três erros, seu cartão será BLOQUEADO TEMPORARIAMENTE \nPara desbloqueá-lo, vá à seção DESBLOQUEAR CARTÃO da BankTinha e insira sua SENHA DA CONTA para desbloqueá-lo. \nSe a senha for inserida incorretamente, seu cartão será BLOQUEADO ETERNAMENTE, e você não poderá mais utilizar a betinha. \nAo cartão só lhe restará o churrascamento. \nE ao beta (o que inclui este que escreve este texto), nada (PORQUE NÃO SOBRA NADA PRO BETA). \n");
 							System.out.println("======================================");
 							break;
 						case 2: 
