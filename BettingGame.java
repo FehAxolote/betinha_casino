@@ -45,7 +45,7 @@ public class BettingGame {
 			System.out.println("3 - Adivinhação difícil -> de 1 a 100 (máximo de tentativas = 8,  multiplicador máximo: 10.0x);");
 			System.out.println("4 - Adivinhação mestra -> de 1 a 250 (máximo de tentativas = 10, multiplicador máximo: 20.0x);");
 			System.out.println("5 - Adivinhação impossível -> de 1 a 500 (máximo de tentativas = 12,  multiplicador máximo: 40.0x);");
-			System.out.println("Digite qualquer outro número para sair.");
+			System.out.println("0 - Sair do sistema.");
 			System.out.println("=========================================");
 			System.out.printf(YELLOW + BOLD + "Saldo de apostas atual: R$%.2f\n"  + RESET, user.getSaldoAposta());
 			System.out.println("=========================================");
@@ -57,6 +57,8 @@ public class BettingGame {
 				int melhorPalpite1 = -1;
 			if(tentativas_drop1 > MAX_TENTATIVAS && confirmacao1 == true) {
 				user.aposta();
+				
+			if (user.confirmacaoAposta == true && user.confirmacaoValor == true) {
 			do {
 				System.out.println("==================================================");
 				System.out.println("Pense em um numero de 1 a 12 e digite-o a seguir:");
@@ -97,6 +99,7 @@ public class BettingGame {
 					System.out.println("==================================================");
 				}
 			}
+			} 
 			} else {
 				System.out.println("==================================================");
 				System.out.println(RED + "Você já jogou este jogo. Volte mais tarde ou reinicie o sistema." + RESET);
@@ -109,6 +112,7 @@ public class BettingGame {
 				int melhorPalpite2 = -1;
 				if(tentativas_drop2 > MAX_TENTATIVAS && confirmacao2 == true) {
 					user.aposta();
+			if (user.confirmacaoAposta == true && user.confirmacaoValor == true) {
 				do {
 					System.out.println("==================================================");
 					System.out.println("Pense em um numero de 1 a 50 e digite-o a seguir:");
@@ -151,7 +155,8 @@ public class BettingGame {
 			System.out.println("Numero máximo de tentativas excedido. Numero sorteado: " +numeroSorteado_drop2 + "." + RESET);
 			System.out.println("==================================================");
 			
-				} else {
+				} 
+			} else {
 					System.out.println("==================================================");
 					System.out.println(RED + "Você já jogou este jogo. Volte mais tarde ou reinicie o sistema." + RESET);
 					System.out.println("==================================================");
@@ -163,6 +168,7 @@ public class BettingGame {
 				int melhorPalpite3 = -1;
 				if(tentativas_drop3 > MAX_TENTATIVAS && confirmacao3 == true) {
 					user.aposta();
+					if (user.confirmacaoAposta == true && user.confirmacaoValor == true) {
 				do {
 					System.out.println("==================================================");
 					System.out.println("Pense em um numero de 1 a 100 e digite-o a seguir:");
@@ -205,6 +211,7 @@ public class BettingGame {
 			System.out.println("Numero máximo de tentativas excedido. Numero sorteado: " +numeroSorteado_drop3 + "." + RESET);
 			System.out.println("==================================================");
 			
+				} 
 				} else {
 					System.out.println("==================================================");
 					System.out.println(RED + "Você já jogou este jogo. Volte mais tarde ou reinicie o sistema." + RESET);
@@ -217,6 +224,7 @@ public class BettingGame {
 				int melhorPalpite4 = -1;
 				if(tentativas_drop4 > MAX_TENTATIVAS && confirmacao4 == true) {
 					user.aposta();
+					if (user.confirmacaoAposta == true && user.confirmacaoValor == true) {
 				do {
 					System.out.println("==================================================");
 					System.out.println("Pense em um numero de 1 a 250 e digite-o a seguir:");
@@ -259,6 +267,7 @@ public class BettingGame {
 			System.out.println("Numero máximo de tentativas excedido. Numero sorteado: " +numeroSorteado_drop4 + "." + RESET);
 			System.out.println("==================================================");
 			
+				} 
 				} else {
 					System.out.println("==================================================");
 					System.out.println(RED + "Você já jogou este jogo. Volte mais tarde ou reinicie o sistema." + RESET);
@@ -271,6 +280,7 @@ public class BettingGame {
 				int melhorPalpite5 = -1;
 				if(tentativas_drop5 > MAX_TENTATIVAS && confirmacao5 == true) {
 					user.aposta();
+					if (user.confirmacaoAposta == true && user.confirmacaoValor == true) {
 				do {
 					System.out.println("==================================================");
 					System.out.println("Pense em um numero de 1 a 500 e digite-o a seguir:");
@@ -312,12 +322,21 @@ public class BettingGame {
 			System.out.println(CYAN + "Seu melhor palpite: " + melhorPalpite5 + ".");
 			System.out.println("Numero máximo de tentativas excedido. Numero sorteado: " +numeroSorteado_drop5 + "." + RESET);
 			System.out.println("==================================================");
+				} 
 				} else {
 					System.out.println("==================================================");
 					System.out.println(RED + "Você já jogou este jogo. Volte mais tarde ou reinicie o sistema." + RESET);
 					System.out.println("==================================================");
 				}
 				break;
+				
+				default: 
+					if (opcao != 0) {
+					System.out.println("==================================================");
+					System.out.println("Opção inválida. Tente novamente.");
+					System.out.println("==================================================");
+					}
+					break;
 				
 			} 
 		} System.out.println("Sistema encerrado.");
