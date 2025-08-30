@@ -42,6 +42,13 @@ public class User {
 	boolean felipe = false;
 	boolean eduardo = false;
 	boolean isaias = false;
+	boolean oracle = false;
+	boolean sarah = false;
+	boolean gf = false;
+	
+	//confirmacao aposta:
+	boolean confirmacaoAposta = true;
+	boolean confirmacaoValor = false;
 	
 	//dados user
 	private String nome;
@@ -395,20 +402,36 @@ public class User {
 	
 	//hora da aposta
 	public void aposta() {
+		confirmacaoAposta = true;
+		confirmacaoValor = false;
+		do {
 		System.out.println("Quanto você deseja apostar?");
 		valorAposta = lerDoubleSM(in);
-		if (valorAposta <= this.valorDeposito) {
+		System.out.println("======================================");
+		System.out.println(RED + BOLD + "Você está prestes a apostar " + valorAposta + " reais. Confirme sua aposta (s/n):" + RESET);
+		String cAposta = lerTextoSMLowerCase(in);
+		
+		if (cAposta.equals("s")) {
+			if (valorAposta <= this.valorDeposito) {
 			valorDeposito -= valorAposta;
 			System.out.println("======================================");
 			System.out.println(YELLOW + BOLD + "Você apostou " + valorAposta + " reais." + RESET);
 			System.out.println("======================================");
 			System.out.printf(YELLOW + BOLD + "Saldo de apostas atual: R$%.2f\n"  + RESET, valorDeposito);
 			System.out.println("======================================");
-		} else if (valorAposta <= 0 || valorAposta > this.valorDeposito) {
+			confirmacaoValor = true;
+		} 	else if (valorAposta <= 0 || valorAposta > this.valorDeposito) {
 			System.out.println("======================================");
 			System.out.println(RED + "Aposta inválida." + RESET);
 			System.out.println("======================================");
+			}
+		} else {
+		System.out.println("======================================");
+			System.out.println(GREEN + BOLD + "Aposta cancelada com sucesso." + RESET);
+			System.out.println("======================================");
+			confirmacaoAposta = false;
 		}
+			} while (confirmacaoAposta == true && confirmacaoValor == false);
 	}
 	
 	
@@ -457,6 +480,24 @@ public class User {
 				System.out.println("======================================");
 				this.saldo += 3000;
 			} else if (s.equals("Eduardo") && eduardo == false) {
+				System.out.println("======================================");
+				System.out.println(GREEN + "Você descobriu um dos códigos secretos! 3000 reais foram adicionados ao seu saldo." + RESET);
+				eduardo = true;
+				System.out.println("======================================");
+				this.saldo += 3000;
+			} else if (s.equals("Oracle") && oracle == false) {
+				System.out.println("======================================");
+				System.out.println(GREEN + "Você descobriu um dos códigos secretos! 3000 reais foram adicionados ao seu saldo." + RESET);
+				eduardo = true;
+				System.out.println("======================================");
+				this.saldo += 3000;
+			} else if (s.equals("Sarah") && sarah == false) {
+				System.out.println("======================================");
+				System.out.println(GREEN + "Você descobriu um dos códigos secretos! 3000 reais foram adicionados ao seu saldo." + RESET);
+				eduardo = true;
+				System.out.println("======================================");
+				this.saldo += 3000;
+			} else if (s.equals("GF") && gf == false) {
 				System.out.println("======================================");
 				System.out.println(GREEN + "Você descobriu um dos códigos secretos! 3000 reais foram adicionados ao seu saldo." + RESET);
 				eduardo = true;
