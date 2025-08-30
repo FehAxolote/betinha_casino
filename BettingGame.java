@@ -323,4 +323,3 @@ public class BettingGame {
 		} System.out.println("Sistema encerrado.");
 	}
 }
-}
