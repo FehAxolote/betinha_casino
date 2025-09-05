@@ -663,7 +663,7 @@ public class User {
 				System.out.print(info);
 				texto = in.nextLine();
 				if (!texto.matches("\\d+")) {
-					 System.out.println(RED + "❌ Sao aceitos apenas numeros naturais. Tente novamente." + RESET);
+					 System.out.println(RED + "❌ São aceitos apenas números naturais. Tente novamente." + RESET);
 					 
 				} else if (texto.trim().isEmpty()) {
 					System.out.println(RED + "❌ Campo não pode ser vazio! Tente novamente." + RESET);
