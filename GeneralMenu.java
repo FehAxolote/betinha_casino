@@ -107,7 +107,7 @@ public class GeneralMenu {
 						System.out.println(PURPLE + "🎲".repeat(43) + RESET);
 						System.out.println(PURPLE + BOLD + "♣️ Bem-vindo ao MENU da Betinha Cassino. Jogue com responsabilidade e se divirta ♣️!" + RESET);
 						System.out.println(PURPLE + "[1] (💸) - BET;");
-						System.out.println("[2] (🔢) - Adivinhe o número;");
+						System.out.println("[2] (🔢) - Adivinhe o número (cassino);");
 						System.out.println("[3] (🃏) - Jogo Especial;");
 						System.out.println("[4] (🔚) - Sair." + RESET);
 						System.out.println(BLUE + BOLD + "=".repeat(43));
