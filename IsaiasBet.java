@@ -30,7 +30,7 @@ public class IsaiasBet {
 
         while (!acertou) {
         	System.out.println("==================================================");
-            System.out.print("Digite seu palpite (ou a senha secreta): ");
+            System.out.print("Digite seu palpite (ou a senha secreta) \n(OBS: Se a senha secreta já foi digitada, tente acertar o número!) \nDigite no campo a seguir: "); ");
             String entrada = user.lerTextoSM(scanner);
 
             // Caso use a senha secreta
