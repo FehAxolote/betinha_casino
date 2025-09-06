@@ -78,7 +78,7 @@ public class Bet {
 				System.out.println("=========================================");
 				System.out.println("Em quem você aposta? (Porcentagens de vitória entre parênteses.)");
 				System.out.println("===========================================");
-			    System.out.printf(GREEN + "A - 🇧🇷Pedro Álvares Cabral (%.1f%%) -> ODD = %.3fx\n" + RESET, porcentagemTMA, oddATM);
+			    System.out.printf(GREEN + "A - 🇵🇹Pedro Álvares Cabral (%.1f%%) -> ODD = %.3fx\n" + RESET, porcentagemTMA, oddATM);
 			    System.out.printf(RED + "B - 🇨🇳Mao Tsé-Tung (%.1f%%) -> ODD = %.3fx\n" + RESET, (100 - porcentagemTMA), oddBTM);
 				System.out.println("===========================================");
 				escolha = user.lerTextoSMUpperCase(in);
